@@ -17,6 +17,15 @@
             <a href="work.php">Identifier l’avion au-dessus de moi</a>
         </div>
     </section>
+
+    <section class="about">
+        <h2>À propos de whatisthisplane</h2>
+        <p class="intro">
+            <strong>whatisthisplane</strong> est une plateforme qui vous permet d’identifier les avions
+            qui survolent votre position ou de suivre le trafic aérien en temps réel.
+        </p>
+        
+    </section>
 </main>
 
 

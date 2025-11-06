@@ -80,7 +80,7 @@
                         <a class="nav-link" href="work.php">Statistiques</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="work.php">A propos</a>
+                        <a class="nav-link" href="about.php">A propos</a>
                     </li>
                 </ul>
             </nav>

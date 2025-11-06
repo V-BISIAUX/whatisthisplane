@@ -12,7 +12,7 @@
                     <li><a href="#">Trouver</a></li>
                     <li><a href="#">Maps</a></li>
                     <li><a href="#">Statistiques</a></li>
-                    <li><a href="#">A propos</a></li>
+                    <li><a href="about.php">A propos</a></li>
                 </ul>
             </div>
             <div class="footer-section">
