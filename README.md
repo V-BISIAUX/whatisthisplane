@@ -1,7 +1,7 @@
 # Whatisthisplane
 
 ## Noms et contacts des auteurs
-- Mathéo COSTA - matheo.costa$@etu.u-cergy.fr
+- Mathéo COSTA - matheo.costa4@etu.u-cergy.fr
 - Valentin BISIAUX - valentin.bisiaux@etu.cyu.fr
 - Thierno Abasse DIALLO - thierno-abasse.diallo1@etu.cyu.fr
 
