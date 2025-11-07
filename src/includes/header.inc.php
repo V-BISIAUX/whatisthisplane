@@ -74,7 +74,7 @@
                         <a class="nav-link" href="work.php">Trouver</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="work.php">Maps</a>
+                        <a class="nav-link" href="carte.php">Carte</a>
                     </li>
                     <li>
                         <a class="nav-link" href="work.php">Statistiques</a>
