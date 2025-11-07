@@ -50,16 +50,18 @@ class Mailer {
 	 */
 	public function sendVerificationEmail(string $to, string $username, string $token, int $expirationSecond): bool {
 		$verificationUrl = URL . '/ajax/user/verify_email.php';
-		$expiration = convertTime(expirationSecond);
+		$expiration = $this->formatTime($expirationSeconds);
 		
-		$subject = "Validation de votre inscription";
-		$body = "
-			<p>Bonjour <strong>" . htmlspecialchars($username) . "</strong>,</p>
-			<p>Merci de vous être inscrit. Pour valider votre compte, veuillez cliquer sur le lien suivant :</p>
-			<p><a href=\"" . htmlspecialchars($verificationUrl) . "?token=" . urlencode($token) . "\">Valider mon email</a></p>
-			<p><strong>⏱️ Ce lien expirera dans {$expiration}.</strong></p>
-			<p>Si vous n'avez pas demandé cette inscription, ignorez cet email.</p>
-		";
+		$subject = "Vérification de votre adresse e-mail";
+		$body = sprintf(
+			'<p>Bonjour %s,</p>
+			 <p>Merci pour votre inscription. Pour valider votre compte, veuillez cliquer sur le lien ci-dessous :</p>
+			 <p><a href="%s">Valider mon adresse e-mail</a></p>
+			 <p>Ce lien expirera dans %s.</p>',
+			htmlspecialchars($username),
+			htmlspecialchars($verificationUrl),
+			htmlspecialchars($expiration)
+		);
 
 		return $this->send($to, $subject, $body);
 	}
@@ -69,16 +71,18 @@ class Mailer {
 	 */
 	public function sendPasswordResetEmail(string $to, string $username, string $resetToken, int $expirationSecond): bool {
 		$resetUrl = URL . '/ajax/user/reset_password.php';
-		$expiration = convertTime(expirationSecond);
+		$expiration = $this->formatTime($expirationSeconds);
 		
 		$subject = "Réinitialisation de votre mot de passe";
-		$body = "
-			<p>Bonjour <strong>" . htmlspecialchars($username) . "</strong>,</p>
-			<p>Vous avez demandé une réinitialisation de votre mot de passe. Cliquez sur le lien ci-dessous :</p>
-			<p><a href=\"" . htmlspecialchars($resetUrl) . "?token=" . urlencode($resetToken) . "\">Réinitialiser mon mot de passe</a></p>
-			<p><strong>⏱️ Ce lien expirera dans {$expiration}.</strong></p>
-			<p>Si vous n'avez pas demandé cette modification, ignorez cet email.</p>
-		";
+		$body = sprintf(
+			'<p>Bonjour %s,</p>
+			 <p>Pour réinitialiser votre mot de passe, cliquez sur le lien ci-dessous :</p>
+			 <p><a href="%s">Réinitialiser mon mot de passe</a></p>
+			 <p>Ce lien expirera dans %s.</p>',
+			htmlspecialchars($username),
+			htmlspecialchars($resetUrl),
+			htmlspecialchars($expiration)
+		);
 		
 		return $this->send($to, $subject, $body);
 	}
@@ -98,9 +102,28 @@ class Mailer {
 	    $minutes = intdiv($seconds, 60);
 	    $seconds %= 60;
 	    
-	    $time = '';
-	    
-	    return $time;
+	    $parts = [];
+
+		if ($days > 0) {
+			$parts[] = $days . ' jour' . ($days > 1 ? 's' : '');
+		}if ($hours > 0) {
+			$parts[] = $hours . ' heure' . ($hours > 1 ? 's' : '');
+		}if ($minutes > 0) {
+			$parts[] = $minutes . ' minute' . ($minutes > 1 ? 's' : '');
+		}if ($seconds > 0) {
+			$parts[] = $seconds . ' seconde' . ($seconds > 1 ? 's' : '');
+		}
+		if (empty($parts)) {
+			return '0 seconde';
+		}
+
+		if (count($parts) === 1) {
+			return $parts[0];
+		} elseif (count($parts) === 2) {
+			return implode(' et ', $parts);
+		} else {
+			$last = array_pop($parts);
+			return implode(', ', $parts) . ' et ' . $last;
+		}
 	}
 }
-

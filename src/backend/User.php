@@ -100,9 +100,9 @@ class User {
 		// Envoi du mail de vérification via Mailer
 		try {
 			$mailer = new Mailer();
-			$expirationMinutes = (int)(self::DEFAULT_TOKEN_EXPIRATION / 60);
+			$expirationSeconds = (int)(self::DEFAULT_TOKEN_EXPIRATION);
 			
-			if (!$mailer->sendVerificationEmail($email, $username, $token, $expirationMinutes)) {
+			if (!$mailer->sendVerificationEmail($email, $username, $token, $expirationSeconds)) {
 				return ['success' => false, 'error' => "Impossible d'envoyer l'email de validation"];
 			}
 		} catch (Exception $e) {
@@ -280,9 +280,9 @@ class User {
 		// Envoyer l'email
 		try {
 			$mailer = new Mailer();
-			$expirationMinutes = (int)(self::DEFAULT_TOKEN_EXPIRATION / 60);
+			$expirationSeconds = (int)(self::DEFAULT_TOKEN_EXPIRATION);
 			
-			if (!$mailer->sendPasswordResetEmail($email, $user['username'], $token, $expirationMinutes)) {
+			if (!$mailer->sendPasswordResetEmail($email, $user['username'], $token, $expirationSeconds)) {
 				return ['success' => false, 'error' => "Impossible d'envoyer l'email"];
 			}
 		} catch (Exception $e) {
