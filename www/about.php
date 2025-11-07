@@ -11,8 +11,8 @@
             Voici l’équipe qui a rendu ce projet possible, chacun apportant ses compétences uniques.
         </p>
 
-        <div class="team-grid">
-            <article class="membre">
+        <div class="grille-cartes">
+            <article class="carte">
                 <div class="photo"></div>
                 <h3>Nom et prénom</h3>
                 <p><strong>Rôle :</strong></p>
@@ -21,7 +21,7 @@
                 <p><strong>Contact :</strong></p>
             </article>
 
-            <article class="membre">
+            <article class="carte">
                 <div class="photo"></div>
                 <h3>Nom et prénom</h3>
                 <p><strong>Rôle :</strong></p>
@@ -30,7 +30,7 @@
                 <p><strong>Contact :</strong></p>
             </article>
 
-            <article class="membre">
+            <article class="carte">
                 <div class="photo"></div>
                 <h3>Nom et prénom</h3>
                 <p><strong>Rôle :</strong></p>

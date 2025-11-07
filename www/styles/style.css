@@ -261,6 +261,42 @@ form input[type="submit"]:hover, button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+article {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    /*border-left: 4px solid #3498db;*/
+    transition: all 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+}
+
+article h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+article p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.grille-cartes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
 footer {
     background: #e4f3ff;
     padding: 30px 0 0;
