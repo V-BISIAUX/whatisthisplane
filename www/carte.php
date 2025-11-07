@@ -21,7 +21,7 @@
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="api.js"></script> <!-- ton fichier API -->
+<script src="js/api.js"></script> <!-- ton fichier API -->
 <script>
 let map = L.map('map').setView([48.8566, 2.3522], 6); // vue France par défaut
 
