@@ -1,5 +1,5 @@
 // api.js - Module d'intégration des API
-const API_BASE_URL = 'https://bisiaux.alwaysdata.net/autre projet/opsky';
+const API_BASE_URL = 'https://whatisthisplane.alwaysdata.net/';
 
 // ============================================
 // 1. OPENSKY NETWORK API
@@ -372,4 +372,5 @@ async function searchAirplaneInDB(icao24) {
         console.error('Erreur recherche avion:', error);
         return { error: 'Erreur serveur' };
     }
+
 }
