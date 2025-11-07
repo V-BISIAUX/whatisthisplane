@@ -48,15 +48,16 @@ class Mailer {
 	/**
 	 * Envoie l'email de vérification après inscription
 	 */
-	public function sendVerificationEmail(string $to, string $username, string $token, int $expirationMinutes = 10): bool {
-		$verificationUrl = URL . '/verify_email.php';
+	public function sendVerificationEmail(string $to, string $username, string $token, int $expirationSecond): bool {
+		string $verificationUrl = URL . '/ajax/user/verify_email.php';
+		array $expiration = convertTime
 		
-		$subject = "Validation de votre inscription";
-		$body = "
+		string $subject = "Validation de votre inscription";
+		string $body = "
 			<p>Bonjour <strong>" . htmlspecialchars($username) . "</strong>,</p>
 			<p>Merci de vous être inscrit. Pour valider votre compte, veuillez cliquer sur le lien suivant :</p>
 			<p><a href=\"" . htmlspecialchars($verificationUrl) . "?token=" . urlencode($token) . "\">Valider mon email</a></p>
-			<p><strong>Ce lien expirera dans {$expirationMinutes} minutes.</strong></p>
+			<p><strong>⏱️ Ce lien expirera dans {$expiration}.</strong></p>
 			<p>Si vous n'avez pas demandé cette inscription, ignorez cet email.</p>
 		";
 
@@ -66,18 +67,39 @@ class Mailer {
     /**
 	 * Envoie un email de réinitialisation de mot de passe
 	 */
-	public function sendPasswordResetEmail(string $to, string $username, string $resetToken, int $expirationMinutes = 10): bool {
-		$resetUrl = BASE_URL . '/reset_password.php';
+	public function sendPasswordResetEmail(string $to, string $username, string $resetToken, int $expirationSecond): bool {
+		string $resetUrl = URL . '/ajax/user/reset_password.php';
 		
-		$subject = "Réinitialisation de votre mot de passe";
-		$body = "
+		string $subject = "Réinitialisation de votre mot de passe";
+		string $body = "
 			<p>Bonjour <strong>" . htmlspecialchars($username) . "</strong>,</p>
 			<p>Vous avez demandé une réinitialisation de votre mot de passe. Cliquez sur le lien ci-dessous :</p>
 			<p><a href=\"" . htmlspecialchars($resetUrl) . "?token=" . urlencode($resetToken) . "\">Réinitialiser mon mot de passe</a></p>
-			<p><strong>Ce lien expirera dans {$expirationMinutes} minutes.</strong></p>
+			<p><strong>⏱️ Ce lien expirera dans {$expiration}.</strong></p>
 			<p>Si vous n'avez pas demandé cette modification, ignorez cet email.</p>
 		";
 		
 		return $this->send($to, $subject, $body);
 	}
+	
+	/**
+	 * Convertie le temps, donné en seconde, en array contenant les jours, heures, minutes et secondes
+	 */
+	private function convertTime(int $seconds) : string {
+	    $seconds = max(0, $seconds);
+	    
+	    int $days = intdiv($seconds, 86400);
+	    $seconds %= 86400;
+	    
+	    int $hours = intdiv($seconds, 3600);
+	    $seconds %= 3600;
+	    
+	    int $minutes = intdiv($seconds, 60);
+	    $seconds %= 60;
+	    
+	    string $time = '';
+	    
+	    return ;
+	}
 }
+

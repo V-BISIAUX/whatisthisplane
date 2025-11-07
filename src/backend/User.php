@@ -81,11 +81,6 @@ class User {
             return ['success' => false, 'error' => "Cet email est déjà enregistré"];
         }
 		
-		// Vérifier doublon username
-		if ($this->usernameExists($username)) {
-            return ['success' => false, 'error' => "Ce nom d'utilisateur est déjà pris"];
-        }
-		
 		// Vérification du domaine MX
 		$domain = substr(strrchr($email, "@"), 1);
 		if (!checkdnsrr($domain, 'MX')) {
@@ -325,7 +320,7 @@ class User {
 			return ['success' => false, 'error' => "Token invalide ou déjà utilisé"];
 		}
 		
-		// Vérifier l'expiration
+		// Vérifier expiration
 		if (strtotime($userData['token_expiration']) < time()) {
 			return ['success' => false, 'error' => "Ce lien de réinitialisation a expiré"];
 		}
@@ -467,26 +462,6 @@ class User {
         }
         
         $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $stmt->store_result();
-        $exists = $stmt->num_rows > 0;
-        $stmt->close();
-        
-        return $exists;
-    }
-	
-	    
-    /**
-     * Vérifie si un email existe déjà
-     */
-    private function usernameExists(string $username): bool {
-        $stmt = $this->mysqli->prepare("SELECT user_id FROM users WHERE username = ? LIMIT 1");
-        
-        if (!$stmt) {
-            throw new Exception('Erreur préparation requête : ' . $this->mysqli->error);
-        }
-        
-        $stmt->bind_param('s', $username);
         $stmt->execute();
         $stmt->store_result();
         $exists = $stmt->num_rows > 0;
