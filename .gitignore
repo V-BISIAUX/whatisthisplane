@@ -1,1 +1,13 @@
-src/config/
+# On ignore tout à la racine
+/* 
+
+# On garde les fichiers www et src
+!/www/
+!/src/
+
+# Enlever les .log et le fichier config
+**/config.php
+*.log
+
+
+!.gitignore
