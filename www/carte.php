@@ -65,7 +65,7 @@ async function refreshPlanes() {
 
 // ➜ centrer la carte sur ta position
 async function initPosition() {
-    const pos = await getUserLocation();
+    const pos = await getBigDataCloudLocation();
     if (!pos) return;
 
     map.setView([pos.lat, pos.lon], 9);
