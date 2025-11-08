@@ -35,20 +35,37 @@ async function refreshPlanes() {
     console.log("Recherche des avions proches...");
 
     const flights = await getNearbyFlights(1); // rayon 1° ~ 111 km
+	
+	if (!flights || flights.length === 0) {
+        console.warn("Aucun avion trouvé.");
+        return;
+    }
+
+    console.log(`${flights.length} avions détectés.`);
 
     flights.forEach(f => {
         if (!f.latitude || !f.longitude) return;
 
         const key = f.icao24;
         const angle = f.true_track || 0;
+		
+		// Correction de la rotation : l’icône pointe vers le sud
+        const iconAngle = (angle + 180) % 360;
+		
+		console.log(`Avion ${f.callsign || "Inconnu"} (${key}) :
+            • Position: [${f.latitude.toFixed(4)}, ${f.longitude.toFixed(4)}]
+            • Angle: ${angle}°
+            • Altitude: ${Math.round(f.baro_altitude || 0)} m
+            • Vitesse: ${Math.round(f.velocity || 0)} km/h`);
 
         // création icône avion rotation direction
         const icon = L.divIcon({
             className: '',
-            html: `<div class="plane-icon" style="transform:rotate(${angle}deg)"></div>`
+            html: `<div class="plane-icon" style="transform:rotate(${iconAngle}deg)"></div>`
         });
 
         if (!planeMarkers[key]) {
+			console.log(`Nouveau marqueur créé pour ${key}`);
             planeMarkers[key] = L.marker([f.latitude, f.longitude], { icon }).addTo(map);
 
             planeMarkers[key].bindPopup(`
@@ -58,7 +75,9 @@ async function refreshPlanes() {
                 Vitesse: ${Math.round(f.velocity || 0)} km/h<br>
             `);
         } else {
+			console.log(`Mise à jour position pour ${key}`);
             planeMarkers[key].setLatLng([f.latitude, f.longitude]);
+			planeMarkers[key].setIcon(icon);
         }
     });
 }
@@ -66,8 +85,12 @@ async function refreshPlanes() {
 // ➜ centrer la carte sur ta position
 async function initPosition() {
     const pos = await getBigDataCloudLocation();
-    if (!pos) return;
-
+    if (!pos) {
+        console.warn("Impossible de récupérer la position de l'utilisateur.");
+        return;
+    }
+	
+	console.log(`Position détectée : [${pos.lat.toFixed(4)}, ${pos.lon.toFixed(4)}]`);
     map.setView([pos.lat, pos.lon], 9);
 }
 
