@@ -1,5 +1,5 @@
 // api.js - Module d'intégration des API
-const API_BASE_URL = 'https://whatisthisplane.alwaysdata.net/';
+const API_BASE_URL = 'https://bisiaux.alwaysdata.net/autre projet/opsky';
 
 // ============================================
 // 1. OPENSKY NETWORK API
@@ -143,33 +143,8 @@ async function getFlightRouteByCallsign(callsign) {
 }
 
 // ============================================
-// 3. IP-API (Géolocalisation)
+// 3. BigDataCloudLocation (Géolocalisation)
 // ============================================
-
-/**
- * Obtenir la géolocalisation de l'utilisateur
- */
-async function getUserLocation() {
-    try {
-        const response = await fetch(`${API_BASE_URL}/get_ip.php`);
-        const data = await response.json();
-
-        return {
-            lat: data.lat,
-            lon: data.lon,
-            city: data.city,
-            region: data.regionName,
-            country: data.country,
-            countryCode: data.countryCode,
-            timezone: data.timezone,
-            isp: data.isp
-        };
-    } catch (error) {
-        console.error('Erreur IP-API (via proxy PHP):', error);
-        return null;
-    }
-}
-
 async function getBigDataCloudLocation() {
     try {
         const response = await fetch('https://api.bigdatacloud.net/data/reverse-geocode-client');
@@ -200,7 +175,7 @@ async function getGPSLocation() {
             return;
         }
 
-        console.log('🔍 Demande de permission GPS...');
+        console.log('Demande de permission GPS...');
         
         navigator.geolocation.getCurrentPosition(
             async (position) => {
@@ -208,7 +183,7 @@ async function getGPSLocation() {
                 const lon = position.coords.longitude;
                 const accuracy = position.coords.accuracy;
                 
-                console.log(`✅ GPS: ${lat}, ${lon} (précision: ±${accuracy}m)`);
+                console.log(`GPS: ${lat}, ${lon} (précision: ±${accuracy}m)`);
                 
                 // Reverse geocoding avec Nominatim
                 try {
@@ -259,7 +234,7 @@ async function getGPSLocation() {
                         errorMsg = 'Délai d\'attente GPS dépassé';
                         break;
                 }
-                console.error('❌ GPS échoué:', errorMsg);
+                console.error('GPS échoué:', errorMsg);
                 reject(new Error(errorMsg));
             },
             {
@@ -281,7 +256,7 @@ async function getGPSLocation() {
 async function getNearbyFlights(radius = 1, lat = null, lon = null) {
     // Si pas de position fournie, récupérer celle de l'utilisateur
     if (lat === null || lon === null) {
-        const pos = await getUserLocation();
+        const pos = await getBigDataCloudLocation();
         if (!pos) return [];
         lat = pos.lat;
         lon = pos.lon;
@@ -372,5 +347,4 @@ async function searchAirplaneInDB(icao24) {
         console.error('Erreur recherche avion:', error);
         return { error: 'Erreur serveur' };
     }
-
 }
