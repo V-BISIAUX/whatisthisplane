@@ -33,11 +33,10 @@
         });
         async function registerUser() {
             const login = document.getElementById('login').value;
-            // const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
             try {
-                const response = await fetch('ajax_register.php', {
+                const response = await fetch('ajax/user/login.php', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({login, password})

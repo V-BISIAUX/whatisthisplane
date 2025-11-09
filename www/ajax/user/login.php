@@ -21,11 +21,11 @@ try {
         exit;
     }
     
-    $username = $input['username'] ?? '';
+    $username = $input['login'] ?? '';
     $email = $input['email'] ?? '';
     $password = $input['password'] ?? '';
     
-    if ((empty($username) xor empty($email)) || empty($password)) {
+    if ((empty($username) && empty($email)) || empty($password)) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Certains champs sont manquant']);
         exit;
