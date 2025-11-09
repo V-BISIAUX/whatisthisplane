@@ -48,18 +48,20 @@ class Mailer {
 	/**
 	 * Envoie l'email de vérification après inscription
 	 */
-	public function sendVerificationEmail(string $to, string $username, string $token, int $expirationSecond): bool {
-		string $verificationUrl = URL . '/ajax/user/verify_email.php';
-		array $expiration = convertTime
+	public function sendVerificationEmail(string $to, string $username, string $token, int $expirationSeconds): bool {
+		$verificationUrl = URL . '/ajax/user/verify_email.php';
+		$expiration = $this->formatTime($expirationSeconds);
 		
-		string $subject = "Validation de votre inscription";
-		string $body = "
-			<p>Bonjour <strong>" . htmlspecialchars($username) . "</strong>,</p>
-			<p>Merci de vous être inscrit. Pour valider votre compte, veuillez cliquer sur le lien suivant :</p>
-			<p><a href=\"" . htmlspecialchars($verificationUrl) . "?token=" . urlencode($token) . "\">Valider mon email</a></p>
-			<p><strong>⏱️ Ce lien expirera dans {$expiration}.</strong></p>
-			<p>Si vous n'avez pas demandé cette inscription, ignorez cet email.</p>
-		";
+		$subject = "Vérification de votre adresse e-mail";
+		$body = sprintf(
+			'<p>Bonjour %s,</p>
+			 <p>Merci pour votre inscription. Pour valider votre compte, veuillez cliquer sur le lien ci-dessous :</p>
+			 <p><a href="%s">Valider mon adresse e-mail</a></p>
+			 <p>Ce lien expirera dans %s.</p>',
+			htmlspecialchars($username),
+			htmlspecialchars($verificationUrl),
+			htmlspecialchars($expiration)
+		);
 
 		return $this->send($to, $subject, $body);
 	}
@@ -67,17 +69,20 @@ class Mailer {
     /**
 	 * Envoie un email de réinitialisation de mot de passe
 	 */
-	public function sendPasswordResetEmail(string $to, string $username, string $resetToken, int $expirationSecond): bool {
-		string $resetUrl = URL . '/ajax/user/reset_password.php';
+	public function sendPasswordResetEmail(string $to, string $username, string $resetToken, int $expirationSeconds): bool {
+		$resetUrl = URL . '/ajax/user/reset_password.php';
+		$expiration = $this->formatTime($expirationSeconds);
 		
-		string $subject = "Réinitialisation de votre mot de passe";
-		string $body = "
-			<p>Bonjour <strong>" . htmlspecialchars($username) . "</strong>,</p>
-			<p>Vous avez demandé une réinitialisation de votre mot de passe. Cliquez sur le lien ci-dessous :</p>
-			<p><a href=\"" . htmlspecialchars($resetUrl) . "?token=" . urlencode($resetToken) . "\">Réinitialiser mon mot de passe</a></p>
-			<p><strong>⏱️ Ce lien expirera dans {$expiration}.</strong></p>
-			<p>Si vous n'avez pas demandé cette modification, ignorez cet email.</p>
-		";
+		$subject = "Réinitialisation de votre mot de passe";
+		$body = sprintf(
+			'<p>Bonjour %s,</p>
+			 <p>Pour réinitialiser votre mot de passe, cliquez sur le lien ci-dessous :</p>
+			 <p><a href="%s">Réinitialiser mon mot de passe</a></p>
+			 <p>Ce lien expirera dans %s.</p>',
+			htmlspecialchars($username),
+			htmlspecialchars($resetUrl),
+			htmlspecialchars($expiration)
+		);
 		
 		return $this->send($to, $subject, $body);
 	}
@@ -88,18 +93,37 @@ class Mailer {
 	private function convertTime(int $seconds) : string {
 	    $seconds = max(0, $seconds);
 	    
-	    int $days = intdiv($seconds, 86400);
+	    $days = intdiv($seconds, 86400);
 	    $seconds %= 86400;
 	    
-	    int $hours = intdiv($seconds, 3600);
+	    $hours = intdiv($seconds, 3600);
 	    $seconds %= 3600;
 	    
-	    int $minutes = intdiv($seconds, 60);
+	    $minutes = intdiv($seconds, 60);
 	    $seconds %= 60;
 	    
-	    string $time = '';
-	    
-	    return ;
+	    $parts = [];
+
+		if ($days > 0) {
+			$parts[] = $days . ' jour' . ($days > 1 ? 's' : '');
+		}if ($hours > 0) {
+			$parts[] = $hours . ' heure' . ($hours > 1 ? 's' : '');
+		}if ($minutes > 0) {
+			$parts[] = $minutes . ' minute' . ($minutes > 1 ? 's' : '');
+		}if ($seconds > 0) {
+			$parts[] = $seconds . ' seconde' . ($seconds > 1 ? 's' : '');
+		}
+		if (empty($parts)) {
+			return '0 seconde';
+		}
+
+		if (count($parts) === 1) {
+			return $parts[0];
+		} elseif (count($parts) === 2) {
+			return implode(' et ', $parts);
+		} else {
+			$last = array_pop($parts);
+			return implode(', ', $parts) . ' et ' . $last;
+		}
 	}
 }
-
