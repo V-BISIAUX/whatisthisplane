@@ -49,7 +49,7 @@ class Mailer {
 	 * Envoie l'email de vérification après inscription
 	 */
 	public function sendVerificationEmail(string $to, string $username, string $token, int $expirationSeconds): bool {
-		$verificationUrl = URL . '/ajax/user/verify_email.php';
+		$verificationUrl = URL . '/ajax/user/verify_email.php?token='.urlencode($token);
 		$expiration = $this->formatTime($expirationSeconds);
 		
 		$subject = "Vérification de votre adresse e-mail";
@@ -65,6 +65,14 @@ class Mailer {
 
 		return $this->send($to, $subject, $body);
 	}
+
+    public function formatTime(int $seconds): string {
+        if ($seconds < 60) {
+            return "$seconds secondes";
+        }
+        $minutes = floor($seconds / 60);
+        return "$minutes minutes";
+    }
 	
     /**
 	 * Envoie un email de réinitialisation de mot de passe

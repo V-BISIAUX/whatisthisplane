@@ -64,11 +64,13 @@ class User {
      * @param string $password Mot de passe en clair
      * @return array ['success' => bool, 'message'|'error' => string]
      */
-    public function register(string $username, string $email, string $password): array {
+    public function register(string $username, string $email, string $password, string $prenom, string $nom): array {
         // Nettoyage des entrées
         $username = trim($username);
         $email = trim($email);
         $password = trim($password);
+        $prenom = trim($prenom);
+        $nom = trim($nom);
         
         // Validations
         $validationResult = $this->validateRegistrationData($username, $email, $password);
@@ -93,7 +95,7 @@ class User {
         $tokenExpiration = $this->generateExpirationToken(self::DEFAULT_TOKEN_EXPIRATION);
         
         // Insertion en BDD
-        if (!$this->insertUser($username, $email, $hashedPassword, $token, $tokenExpiration)) {
+        if (!$this->insertUser($username, $email, $hashedPassword, $token, $tokenExpiration, $prenom, $nom)) {
 			return ['success' => false, 'error' => "Erreur lors de l'inscription"];
 		}
 		
@@ -473,17 +475,17 @@ class User {
     /**
      * Insère un nouvel utilisateur en BDD
      */
-    private function insertUser(string $username, string $email, string $hashedPassword, string $token, string $tokenExpiration): bool {
+    private function insertUser(string $username, string $email, string $hashedPassword, string $token, string $tokenExpiration, string $prenom, string $nom): bool {
         $stmt = $this->mysqli->prepare(
-            "INSERT INTO users (username, email, password, email_verified, verification_token, token_expiration) 
-             VALUES (?, ?, ?, 0, ?, ?)"
+            "INSERT INTO users (username, email, password, email_verified, verification_token, token_expiration, prenom, nom) 
+             VALUES (?, ?, ?, 0, ?, ?, ?, ?)"
         );
         
         if (!$stmt) {
             throw new Exception('Erreur préparation requête : ' . $this->mysqli->error);
         }
         
-        $stmt->bind_param('sssss', $username, $email, $hashedPassword, $token, $tokenExpiration);
+        $stmt->bind_param('sssssss', $username, $email, $hashedPassword, $token, $tokenExpiration, $prenom, $nom);
         $success = $stmt->execute();
         $stmt->close();
         

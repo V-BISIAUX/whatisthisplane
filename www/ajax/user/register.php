@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 header('Content-Type: application/json');
 
 require_once __DIR__ . '/../../../src/config/config.php';
@@ -22,12 +21,15 @@ try {
         exit;
     }
     
-    $username = $input['username'] ?? '';
+    $username = $input['login'] ?? '';
     $email = $input['email'] ?? '';
     $password = $input['password'] ?? '';
-    $recaptchaToken = $input['recaptcha_token'] ?? '';
-    
-    if (empty($username) || empty($email) || empty($password) || empty($recaptchaToken)) {
+    $prenom = $input['prenom'] ?? '';
+    $nom = $input['nom'] ?? '';
+//    $recaptchaToken = $input['recaptcha_token'] ?? '';
+//    || empty($recaptchaToken)
+
+    if (empty($username) || empty($email) || empty($password) || empty($prenom) || empty($nom)) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Tous les champs sont requis']);
         exit;
@@ -36,27 +38,27 @@ try {
     // ============================================
     // VÉRIFICATION reCAPTCHA v2
     // ============================================
-    $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-    $recaptchaParams = http_build_query([
-        'secret' => RECAPTCHA_SECRETKEY,
-        'response' => $recaptchaToken,
-        'remoteip' => $_SERVER['REMOTE_ADDR']
-    ]);
-    
-    $recaptchaResponse = file_get_contents($recaptchaUrl . '?' . $recaptchaParams);
-    $recaptchaData = json_decode($recaptchaResponse);
-    
-    if (!$recaptchaData->success) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'error' => 'Vérification reCAPTCHA échouée']);
-        exit;
-    }
+//    $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+//    $recaptchaParams = http_build_query([
+//        'secret' => RECAPTCHA_SECRETKEY,
+//        'response' => $recaptchaToken,
+//        'remoteip' => $_SERVER['REMOTE_ADDR']
+//    ]);
+//
+//    $recaptchaResponse = file_get_contents($recaptchaUrl . '?' . $recaptchaParams);
+//    $recaptchaData = json_decode($recaptchaResponse);
+//
+//    if (!$recaptchaData->success) {
+//        http_response_code(400);
+//        echo json_encode(['success' => false, 'error' => 'Vérification reCAPTCHA échouée']);
+//        exit;
+//    }
     
     // ============================================
     // INSCRIPTION
     // ============================================
     $user = new User();
-    $result = $user->register($username, $email, $password);
+    $result = $user->register($username, $email, $password, $prenom, $nom);
     
     if ($result['success']) {
         http_response_code(201);
