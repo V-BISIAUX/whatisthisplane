@@ -8,11 +8,12 @@
     <meta name="author" content="Thierno Abasse DIALLO"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/style.css"/>
     <?php
         date_default_timezone_set('Europe/Paris');
 
+        require_once __DIR__ . "/../config/config.php";
         $youtube = "images/youtube_sombre.png";
         $instagram = "images/instagram_sombre.png";
         $twitter = "images/twitter_sombre.png";
@@ -58,7 +59,7 @@
         <figure class="mb-0 ml-2 d-flex align-items-center">
             <a class="navbar-brand" href="index.php">
                 <img src="<?= $logo; ?>" alt="Logo du site"/>
-                <span class="ms-2">Whatisthisplane</span>
+                <span class="ms-2"><?=SITE_NAME?></span>
             </a>
         </figure>
 
@@ -71,7 +72,7 @@
             <nav class="my-3 my-lg-0">
                 <ul class="navbar-nav flex-row flex-lg-row gap-3">
                     <li>
-                        <a class="nav-link" href="work.php">Trouver</a>
+                        <a class="nav-link" href="search.php">Trouver</a>
                     </li>
                     <li>
                         <a class="nav-link" href="work.php">Maps</a>
