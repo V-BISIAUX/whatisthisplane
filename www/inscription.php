@@ -54,14 +54,13 @@
             const email = document.getElementById('email').value;
             const prenom = document.getElementById('prenom').value;
             const nom = document.getElementById('nom').value;
-            // const recaptchaToken = document.querySelector('textarea[name="g-recaptcha-response"]').value;
-            // console.log(recaptchaToken)
-                // ,  recaptcha_token: recaptchaToken
+            const recaptchaToken = document.querySelector('textarea[name="g-recaptcha-response"]').value;
+
             try {
                 const response = await fetch('ajax/user/register.php', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({login, password, email, prenom, nom})
+                    body: JSON.stringify({login, password, email, prenom, nom,  recaptcha_token: recaptchaToken})
                 });
 
                 const data = await response.json();

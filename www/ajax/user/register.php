@@ -26,10 +26,10 @@ try {
     $password = $input['password'] ?? '';
     $prenom = $input['prenom'] ?? '';
     $nom = $input['nom'] ?? '';
-//    $recaptchaToken = $input['recaptcha_token'] ?? '';
-//    || empty($recaptchaToken)
+    $recaptchaToken = $input['recaptcha_token'] ?? '';
 
-    if (empty($username) || empty($email) || empty($password) || empty($prenom) || empty($nom)) {
+
+    if (empty($username) || empty($email) || empty($password) || empty($recaptchaToken) || empty($prenom) || empty($nom)) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Tous les champs sont requis']);
         exit;
@@ -38,21 +38,21 @@ try {
     // ============================================
     // VÉRIFICATION reCAPTCHA v2
     // ============================================
-//    $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-//    $recaptchaParams = http_build_query([
-//        'secret' => RECAPTCHA_SECRETKEY,
-//        'response' => $recaptchaToken,
-//        'remoteip' => $_SERVER['REMOTE_ADDR']
-//    ]);
-//
-//    $recaptchaResponse = file_get_contents($recaptchaUrl . '?' . $recaptchaParams);
-//    $recaptchaData = json_decode($recaptchaResponse);
-//
-//    if (!$recaptchaData->success) {
-//        http_response_code(400);
-//        echo json_encode(['success' => false, 'error' => 'Vérification reCAPTCHA échouée']);
-//        exit;
-//    }
+    $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+    $recaptchaParams = http_build_query([
+        'secret' => RECAPTCHA_SECRETKEY,
+        'response' => $recaptchaToken,
+        'remoteip' => $_SERVER['REMOTE_ADDR']
+    ]);
+
+    $recaptchaResponse = file_get_contents($recaptchaUrl . '?' . $recaptchaParams);
+    $recaptchaData = json_decode($recaptchaResponse);
+
+    if (!$recaptchaData->success) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Vérification reCAPTCHA échouée']);
+        exit;
+    }
     
     // ============================================
     // INSCRIPTION

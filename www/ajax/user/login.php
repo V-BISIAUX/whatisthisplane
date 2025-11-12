@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-
+session_start();
 header('Content-Type: application/json');
 
 require_once __DIR__ . '/../../../src/config/config.php';
@@ -40,6 +40,7 @@ try {
     $result = $user->login($identifier, $password);
     
     if ($result['success']) {
+        $_SESSION['login'] = $result['username'] ?? $identifier;
         http_response_code(200);
     } else {
         http_response_code(400);
