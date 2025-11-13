@@ -49,16 +49,22 @@
     </section>
 
     <section>
-        <h2>Discutons avec l’équipe</h2>
+        <h2>Discutez avec l’équipe</h2>
         <p>Vous avez une question ou une suggestion ? Notre équipe vous répondra sous deux jours ouvrés !</p>
-        <form action="" method="post">
-            <label for="prenom">Prenom</label>
-            <input name="prenom" id="prenom" type="text"/>
-            <label for="nom"></label>
-            <input type="text" name="nom" id="nom" placeholder="Nom"/>
-            <label for="email"></label>
-            <input type="email" name="email" id="email" placeholder="Email"/>
-            <label for="questions"></label>
+        <form action="" method="post" id="contact_form">
+            <div class="name-container">
+                <div class="name-item">
+                    <label for="prenom">Prenom</label>
+                    <input name="prenom" id="prenom" type="text" placeholder="Votre prenom"/>
+                </div>
+                <div class="name-item">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" id="nom" placeholder="Nom"/>
+                </div>
+            </div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" required="required"/>
+            <label for="questions">Questions</label>
             <textarea name="questions" id="questions" cols="30" rows="10"></textarea>
             <input type="submit">
         </form>

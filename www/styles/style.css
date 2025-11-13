@@ -273,12 +273,26 @@ form select,
 form textarea {
     width: 100%;
     padding: 12px 30px 15px 35px;
-    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
     background-color: #fff;
     transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.name-container {
+    display: flex;
+    gap: 10px;
+}
+
+.name-container .name-item {
+    flex: 1;
+}
+
+#contact_form input[name="prenom"],
+#contact_form input[name="nom"] {
+    width: 100%;
 }
 
 form input:focus,
