@@ -78,7 +78,7 @@ class Mailer {
 	 * Envoie un email de réinitialisation de mot de passe
 	 */
 	public function sendPasswordResetEmail(string $to, string $username, string $resetToken, int $expirationSeconds): bool {
-		$resetUrl = URL . '/ajax/user/reset_password.php';
+		$resetUrl = URL . 'reset_password.php?token='.urlencode($resetToken);
 		$expiration = $this->formatTime($expirationSeconds);
 		
 		$subject = "Réinitialisation de votre mot de passe";
@@ -96,7 +96,7 @@ class Mailer {
 	}
 	
 	/**
-	 * Convertie le temps, donné en seconde, en array contenant les jours, heures, minutes et secondes
+	 * Convertie le temps, donné en seconde, en chaine de caractère en français décrivant le temps
 	 */
 	private function convertTime(int $seconds) : string {
 	    $seconds = max(0, $seconds);
