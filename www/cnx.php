@@ -19,7 +19,6 @@
                 <input type="password" id="password" name="password" placeholder="Tapez ici votre mot de passe" required="required"/>
                 <i class="fa-solid fa-eye" id="icon-eye"></i>
             </div>
-            <div class="g-recaptcha" data-sitekey="<?= htmlspecialchars(RECAPTCHA_SITEKEY)?>"></div>
             <input type="submit" value="Connexion"/>
             <span id="message"></span>
         </form>
