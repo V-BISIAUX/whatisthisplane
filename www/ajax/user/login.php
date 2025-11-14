@@ -40,7 +40,9 @@ try {
     $result = $user->login($identifier, $password);
     
     if ($result['success']) {
-        $_SESSION['login'] = $result['username'] ?? $identifier;
+        $_SESSION['login'] = $result['username'];
+        $_SESSION['user_id'] = $result['user_id'];
+        $_SESSION['email'] = $result['email'];
         http_response_code(200);
     } else {
         http_response_code(400);

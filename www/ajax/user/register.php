@@ -4,7 +4,6 @@ header('Content-Type: application/json');
 
 require_once __DIR__ . '/../../../src/config/config.php';
 require_once __DIR__ . '/../../../src/backend/User.php';
-require_once __DIR__ . '/../../../src/backend/Mailer.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
