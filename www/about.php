@@ -14,9 +14,9 @@
 
         <div class="grille-cartes">
             <article class="carte">
-                <figure>
-                    <img src="" alt="photo (avatar) du membre">
-                </figure>
+<!--                <figure>-->
+<!--                    <img src="" alt="photo (avatar) du membre">-->
+<!--                </figure>-->
                 <h3>BISIAUX Valentin</h3>
                 <p><strong>Rôle :</strong></p>
                 <p><strong>Description :</strong></p>
@@ -25,9 +25,9 @@
             </article>
 
             <article class="carte">
-                <figure>
-                    <img src="" alt="photo (avatar) du membre">
-                </figure>
+<!--                <figure>-->
+<!--                    <img src="" alt="photo (avatar) du membre">-->
+<!--                </figure>-->
                 <h3>COSTA Mathéo</h3>
                 <p><strong>Rôle :</strong></p>
                 <p><strong>Description :</strong></p>
@@ -36,9 +36,9 @@
             </article>
 
             <article class="carte">
-                <figure>
-                    <img src="" alt="photo (avatar) du membre">
-                </figure>
+<!--                <figure>-->
+<!--                    <img src="" alt="photo (avatar) du membre">-->
+<!--                </figure>-->
                 <h3>DIALLO Thierno Abasse</h3>
                 <p><strong>Rôle :</strong></p>
                 <p><strong>Description :</strong></p>
@@ -51,7 +51,7 @@
     <section>
         <h2>Discutez avec l’équipe</h2>
         <p>Vous avez une question ou une suggestion ? Notre équipe vous répondra sous deux jours ouvrés !</p>
-        <form action="" method="post" id="contact_form">
+        <form action="#" method="post" id="contact_form">
             <div class="name-container">
                 <div class="name-item">
                     <label for="prenom">Prenom</label>

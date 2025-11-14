@@ -1,0 +1,100 @@
+header.custom-header {
+    background: #0f172a !important;
+}
+
+header.custom-header a {
+    color: #e4f3ff;
+}
+
+.btn1 {
+    color: #e4f3ff;
+    box-shadow: 0 4px 2px rgba(255, 255, 255, 0.2);
+    background: #0f172a;
+}
+
+body {
+    background: #0B101A;
+}
+
+main {
+    background: #0f172a;
+    color: #e4f3ff;
+    border: 1px solid #000;
+}
+
+h1, h3 {
+    border-bottom: 2px solid #e4f3ff;
+}
+
+.hero h2, .image h2, main section h2 {
+    color: #e4f3ff;
+}
+
+header nav a {
+    color: #e4f3ff;
+}
+
+aside {
+    background-color: #0f172a;
+    border-left: 4px solid #e4f3ff;
+    border-bottom: 4px solid #e4f3ff;
+    color: #e4f3ff;
+}
+
+aside:hover {
+    transform: scale(0.9);
+}
+
+footer {
+    background: #0f172a;
+}
+
+.footer-section ul li a {
+    color: #e4f3ff;
+}
+
+.footer-section h3 {
+    color: #e4f3ff;
+}
+
+.footer-bottom {
+    background: #1a1a1a;
+}
+
+main section figure:hover {
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+}
+
+main section figcaption {
+    color: #e4f3ff;
+}
+
+
+form {
+    background-color: #0f172a;
+    border: 0.5px solid #fff;
+    border-bottom: 4px solid #e4f3ff;
+}
+
+form label {
+    color: #e4f3ff;
+}
+
+form input {
+    background-color: #0f172a;
+    border: none;
+    border-bottom: 2px solid #e4f3ff;
+}
+
+input::placeholder, .legend, input {
+    color: #e4f3ff;
+}
+
+form input[type="submit"] {
+    background-color: #0f1820;
+}
+
+form input[type="submit"]:hover, form select {
+    color: #fff;
+    background-color: #0f172a;
+}

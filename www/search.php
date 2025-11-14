@@ -10,8 +10,9 @@ require "../src/includes/header.inc.php";
     <main>
         <h1>Rechercher un vol, une compagnie ou un avion</h1>
         <p>Entrez un numéro de vol, le nom d’un avion, le code icao ou d’une compagnie pour obtenir toutes les informations.</p>
-        <p><strong>Pour l'instant on a juste le recherche par icao qui marche</strong></p>
+        <p><strong>Pour l'instant, on a juste la recherche par icao qui marche</strong></p>
         <section class="search">
+            <h2>Rechercher</h2>
             <form method="post" action="#" id="form-search">
                 <label for="flight-search">Numéro de vol, avion ou compagnie</label>
                 <input type="text" id="flight-search" name="flight-search" placeholder="Numéro de vol, avion ou compagnie..." required="required"/>
@@ -27,17 +28,19 @@ require "../src/includes/header.inc.php";
             <h2>Aperçu des avions les plus recherchés</h2>
             <div class="grille-carte">
                 <article class="carte">
-                    <figure>
-                        <img src="" alt="vignette de l'avion (nom de l'avion)">
-                    </figure>
+                    <h3>Nom de l'avion</h3>
+<!--                    <figure>-->
+<!--                        <img src="" alt="vignette de l'avion (nom de l'avion)">-->
+<!--                    </figure>-->
                     <p>Nom de l'avion / compagnie</p>
                     <p>Numéro de vol associés</p>
                     <p>Statut actuel ()</p>
                 </article>
                 <article class="carte">
-                    <figure>
-                        <img src="" alt="vignette de l'avion (nom de l'avion)">
-                    </figure>
+                    <h3>Nom de l'avion</h3>
+<!--                    <figure>-->
+<!--                        <img src="" alt="vignette de l'avion (nom de l'avion)">-->
+<!--                    </figure>-->
                     <p>Nom de l'avion / compagnie</p>
                     <p>Numéro de vol associés</p>
                     <p>Statut actuel ()</p>
