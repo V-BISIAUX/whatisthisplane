@@ -1,5 +1,4 @@
 // api.js - Module d'intégration des API
-const API_BASE_URL = 'https://bisiaux.alwaysdata.net/autre projet/opsky';
 
 // ============================================
 // 1. OPENSKY NETWORK API
@@ -140,6 +139,67 @@ async function getFlightRouteByCallsign(callsign) {
         console.error("Erreur ADSBDB flight route API :", error);
         return null;
     }
+}
+
+/**
+ * Obtenir toutes les infos d'un avion 
+ * @param {string} icao (mode-S) - ex: AD6BDC
+ */
+async function getAircraftData(icao) {
+    if (!icao || icao.trim() === "") {
+        console.warn("Aucun icao fourni");
+        return null;
+    }
+
+    // Nettoyage icao (enlever espaces)
+    const cleanicao = icao.trim();
+
+    const url = `https://api.adsbdb.com/v0/aircraft/${cleanicao}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (!data.response || !data.response.aircraft) {
+            return null;
+        }
+
+        // Retourne toutes les données de l’avion
+        return data.response.aircraft;
+
+    } catch (error) {
+        console.error("Erreur ADSBDB Aircraft API :", error);
+        return null;
+    }
+}
+
+/**
+ * Obtenir les infos l'image d'un avion 
+ * @param {string} icao (mode-S) - ex: AD6BDC
+ */
+async function getAircraftPhotos(icao) {
+    const data = await getAircraftData(icao);
+    if (!data) return null;
+
+    return {
+        url_photo: data.url_photo || null,
+        url_photo_thumbnail: data.url_photo_thumbnail || null
+    };
+}
+
+/**
+ * Obtenir les infos du nom complet d'un avion 
+ * @param {string} icao (mode-S) - ex: AD6BDC
+ */
+async function getAircraftName(icao) {
+    const data = await getAircraftData(icao);
+    if (!data) return null;
+
+    const manufacturer = data.manufacturer || "";
+    const type = data.type || "";
+
+    const fullName = `${manufacturer} ${type}`.trim();
+    return fullName || null;
 }
 
 // ============================================

@@ -379,6 +379,31 @@ article p {
     margin-top: 30px;
 }
 
+/* Petit bloc avion + miniature */
+.aircraft-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.aircraft-header img {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Image principale */
+.aircraft-photo {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-top: 10px;
+    display: block;
+}
+
+
 footer {
     background: #e4f3ff;
     padding: 30px 0 0;

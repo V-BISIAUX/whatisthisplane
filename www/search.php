@@ -61,20 +61,45 @@ require "../src/includes/header.inc.php";
             }
 
             const data = await getFlightByIcao24(searchValue);
-            console.log(data);
-            if (data) {
-                const parseData = parseOpenSkyData(data);
-                let output = `<p>ICAO : ${parseData.icao24}</p>`;
-                output += `<p>Callsign : ${parseData.callsign}</p>`;
-                output += `<p>Pays d'origin : ${parseData.origin_country}</p>`;
-                output += `<p>Heure : ${parseData.time}</p>`;
-                output += `<p>Derniere position : ${parseData.last_contact}</p>`;
-                output += `<p>Longitude : ${parseData.longitude}</p>`;
-                output += `<p>Latitude : ${parseData.latitude}</p>`;
-                result.innerHTML = output;
-            }else {
-                result.innerHTML =  `<p>ICAO non existant</p>`;
-            }
+			console.log(data);
+			
+			if (!data) {
+				result.innerHTML = `<p>ICAO non existant</p>`;
+				return;
+			}
+            
+			const parseData = parseOpenSkyData(data);
+			
+			const aircraftName = await getAircraftName(searchValue);
+			const photos = await getAircraftPhotos(searchValue);
+
+			let output = "";
+			output += `<div class="aircraft-header">`;
+
+			if (photos?.url_photo_thumbnail) {
+				output += `<img src="${photos.url_photo_thumbnail}" alt="Miniature de l'avion">`;
+			}
+			output += `<strong>${aircraftName ?? "Avion inconnu"}</strong>`;
+			output += `</div>`;
+			
+			output += `<p>ICAO : ${parseData.icao24}</p>`;
+			output += `<p>Callsign : ${parseData.callsign}</p>`;
+			output += `<p>Pays d'origin : ${parseData.origin_country}</p>`;
+			output += `<p>Heure : ${parseData.time}</p>`;
+			output += `<p>Derniere position : ${parseData.last_contact}</p>`;
+			output += `<p>Longitude : ${parseData.longitude}</p>`;
+			output += `<p>Latitude : ${parseData.latitude}</p>`;
+			
+			if (photos?.url_photo) {
+				output += `<p>Photos :</p>`;
+				output += `<img class="aircraft-photo" src="${photos.url_photo}" alt="Photo de l'avion">`;
+
+			} else {
+				output += `<p>Aucune photo disponible</p>`;
+			}
+			
+			result.innerHTML = output;
+
         });
     </script>
     <script src="js/api.js"></script>
