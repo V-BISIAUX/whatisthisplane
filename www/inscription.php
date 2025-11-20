@@ -1,11 +1,12 @@
 <?php
     declare(strict_types=1);
-    $title = "Inscription";
+    $title = "Créer un compte – WhatisThisPlane";
     require_once "../src/config/config.php";
     require "../src/includes/header.inc.php";
 ?>
 
     <main>
+        <h1>Inscrivez-vous sur WhatisThisPlane</h1>
         <form method="post" id="subscribe-form">
             <p class="legend">S"inscrire</p>
             <label for="login">Entrez votre login</label>

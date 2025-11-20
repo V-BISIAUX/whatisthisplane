@@ -1,6 +1,6 @@
 <?php
     declare(strict_types=1);
-    $title = "En travaux";
+    $title = "En travaux – WhatisThisPlane";
     require "../src/includes/header.inc.php";
 ?>
 

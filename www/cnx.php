@@ -1,11 +1,12 @@
 <?php
     declare(strict_types=1);
     session_start();
-    $title = "Connexion";
+    $title = "Se connecter à WhatisThisPlane pour identifier les avions";
     require_once "../src/config/config.php";
     require "../src/includes/header.inc.php";
 ?>
     <main>
+        <h1>Connexion à votre compte WhatisThisPlane</h1>
         <form method="post" id="loginForm">
             <p class="legend">Se connecter</p>
             <label for="login"> Entrez votre login ou email</label>

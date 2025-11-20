@@ -1,6 +1,6 @@
 <?php
     declare(strict_types=1);
-    $title = "A propos";
+    $title = "À propos de WhatisThisPlane – Tout savoir sur notre mission";
     require "../src/includes/header.inc.php";
 ?>
 

@@ -4,7 +4,7 @@
         session_start();
     }
 
-    $title = "Accueil";
+    $title = "WhatisThisPlane – Identifier et découvrir les avions facilement";
     require "../src/includes/header.inc.php";
 ?>
 

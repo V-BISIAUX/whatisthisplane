@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /logout.php
+
+Sitemap: https://whatisthisplane.com/sitemap.xml
