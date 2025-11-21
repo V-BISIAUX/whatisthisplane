@@ -1,3 +1,4 @@
+Options +FollowSymLinks
 RewriteEngine On
 RewriteBase /
 
@@ -14,7 +15,21 @@ RewriteRule ^search$ search.php [L]
 RewriteRule ^inscription$ inscription.php [L]
 
 # /connexion → cnx.php
+RewriteRule ^cnx$ cnx.php [L]
 RewriteRule ^connexion$ cnx.php [L]
 
 # Page d’accueil
 RewriteRule ^$ index.php [L]
+
+<FilesMatch "^\.(?!php$|html?$).*$">
+    Require all denied
+</FilesMatch>
+
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 404 /error.php?code=404
+ErrorDocument 500 /error.php?code=500
+
+# ---- Si aucune règle ne correspond → 404 ----
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /error.php?code=404 [L]
