@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteBase /
+
+# Exemple : /about → about.php
+RewriteRule ^about$ about.php [L]
+
+# /work → work.php
+RewriteRule ^work$ work.php [L]
+
+# /search → search.php
+RewriteRule ^search$ search.php [L]
+
+# /inscription → inscription.php
+RewriteRule ^inscription$ inscription.php [L]
+
+# /connexion → cnx.php
+RewriteRule ^connexion$ cnx.php [L]
+
+# Page d’accueil
+RewriteRule ^$ index.php [L]
