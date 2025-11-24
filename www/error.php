@@ -86,7 +86,7 @@ switch($code) {
     <main>
         <div class="container">
             <div class="text">
-                <h1><?= $code ?></h1>
+                <h1><?= $code ?> - WhatIsThisPlane</h1>
                 <p><?= htmlspecialchars($message) ?></p>
                 <p>La page que vous recherchez n'existe pas sur WhatisThisPlane.</p>
                 <p style="margin-top:40px;"><a href="/">Retour à l'accueil</a></p>

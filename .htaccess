@@ -21,9 +21,6 @@ RewriteRule ^connexion$ cnx.php [L]
 # Page d’accueil
 RewriteRule ^$ index.php [L]
 
-<FilesMatch "^\.(?!php$|html?$).*$">
-    Require all denied
-</FilesMatch>
 
 ErrorDocument 403 /error.php?code=403
 ErrorDocument 404 /error.php?code=404

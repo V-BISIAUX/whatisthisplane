@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /logout.php
 
-Sitemap: https://whatisthisplane.alwaysdata.net//sitemap.xml
+Sitemap: https://whatisthisplane.alwaysdata.net/sitemap.xml
