@@ -91,6 +91,9 @@
             </nav>
 
             <div class="right my-3 my-lg-0">
+                <?php if (isset($_SESSION['login'])): ?>
+                    <a href="mon-profile.php">Mon Profil</a>
+                <?php endif; ?>
                 <a href="cnx.php" class="btn1">Se connecter</a>
                 <a href="<?= $url ?>">
                     <img src="<?= $img; ?>" alt="icone pour le changement de theme" />
