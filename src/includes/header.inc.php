@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="keywords" content="WhatIsThisPlane"/>
+    <meta name="keywords" content="WhatIsThisPlane,What Is This Plane,rechercher les avions au-dessus de nous,Quel avion au-dessus de moi,trouver avion au-dessus de moi"/>
     <meta name="location" content="Université CY / projet UE en Développement Web, France"/>
     <meta name="description" content="Suivez en temps réel les avions autour de vous. Whatisthisplane affiche la position, la trajectoire et les informations de chaque vol grâce à une carte interactive.">
     <meta name="application-name" content="Whatisthisplane">
     <meta name="apple-mobile-web-app-title" content="Whatisthisplane">
     <meta name="og:site_name" content="Whatisthisplane">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Thierno Abasse DIALLO"/>
+    <meta name="author" content="Thierno Abasse DIALLO,Costa Mathéo,Bisiaux Valentin"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles/style.css"/>

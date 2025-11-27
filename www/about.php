@@ -14,9 +14,9 @@
 
         <div class="grille-cartes">
             <article class="carte">
-<!--                <figure>-->
-<!--                    <img src="" alt="photo (avatar) du membre">-->
-<!--                </figure>-->
+                <figure>
+                    <img src="images/employee-icon.svg" alt="photo (avatar) du membre" width="150" height="150"/>
+                </figure>
                 <h3>BISIAUX Valentin</h3>
                 <p><strong>Rôle :</strong></p>
                 <p><strong>Description :</strong></p>
@@ -25,9 +25,9 @@
             </article>
 
             <article class="carte">
-<!--                <figure>-->
-<!--                    <img src="" alt="photo (avatar) du membre">-->
-<!--                </figure>-->
+                <figure>
+                    <img src="images/businessman-icon.svg" alt="photo (avatar) du membre" width="150" height="150"/>
+                </figure>
                 <h3>COSTA Mathéo</h3>
                 <p><strong>Rôle :</strong></p>
                 <p><strong>Description :</strong></p>
@@ -36,9 +36,9 @@
             </article>
 
             <article class="carte">
-<!--                <figure>-->
-<!--                    <img src="" alt="photo (avatar) du membre">-->
-<!--                </figure>-->
+                <figure>
+                    <img src="images/employee-icon.svg" alt="photo (avatar) du membre" width="150" height="150"/>
+                </figure>
                 <h3>DIALLO Thierno Abasse</h3>
                 <p><strong>Rôle :</strong></p>
                 <p><strong>Description :</strong></p>

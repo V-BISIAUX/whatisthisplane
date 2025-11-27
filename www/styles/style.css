@@ -379,6 +379,10 @@ article p {
     margin-top: 30px;
 }
 
+.carte figure {
+    text-align: center;
+}
+
 /* Petit bloc avion + miniature */
 .aircraft-header {
     display: flex;
@@ -489,21 +493,28 @@ h1, h3 {
     main > h1 {
         font-size: 24px !important;
         margin: 2%;
+        text-align: start;
     }
 
     .hero-content a {
         padding: 0.5rem 1rem;
         border-radius: 8px;
-        font-size: 0.5rem;
+        font-size: 0.4rem;
+        display: inline-block;
         transition: background-color 0.3s ease;
     }
 
+
+    .hero-content h2 {
+        text-align: start;
+    }
+
     main section h2, .hero h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .footer-section h3 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     section {
@@ -520,6 +531,11 @@ h1, h3 {
 
     main p, .hero p {
         font-size: 16px;
+    }
+
+    .work {
+        width: 260px;
+        height: 260px;
     }
 
     form input,

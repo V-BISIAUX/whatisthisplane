@@ -47,7 +47,7 @@ switch($code) {
             flex-direction: column;
             align-items: center;
         }
-        h1 { font-size: 60px; color: #ff4b4b; margin-bottom: 20px; }
+        h1 { font-size: 50px; color: #ff4b4b; margin-bottom: 20px; }
         p { text-align: center; }
         a { text-decoration: none; color: white; background: #005AA3; padding: 10px 20px; border-radius: 5px; }
         @media (min-width: 800px) {

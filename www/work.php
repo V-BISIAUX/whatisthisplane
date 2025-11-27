@@ -13,8 +13,8 @@
             Cette page est actuellement en cours de préparation. Nous travaillons activement pour vous fournir du contenu pertinent.
             Rendez-vous bientôt pour découvrir la suite !</p>
 
-        <div style="text-align: center;">
-            <img src="images/work-in-progress.png" alt="Page en construction"/>
+        <div style="text-align: center; display: flex;">
+            <img src="images/work-in-progress.png" alt="Page en construction" class="work"/>
         </div>
     </main>
 

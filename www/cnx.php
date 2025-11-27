@@ -20,6 +20,7 @@
                 <input type="password" id="password" name="password" placeholder="Tapez ici votre mot de passe" required="required"/>
                 <i class="fa-solid fa-eye" id="icon-eye"></i>
             </div>
+            <a href="mdp.php" class="forgot">Mot de passe oublié ?</a>
             <input type="submit" value="Connexion"/>
             <span id="message"></span>
         </form>
@@ -65,4 +66,4 @@
 
 <?php
     require "../src/includes/footer.inc.php";
-?>
+?>//<i class="fas fa-plane"></i>
