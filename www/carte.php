@@ -93,7 +93,7 @@ require "../src/includes/header.inc.php";
                 const angle = f.true_track || 0;
                 
                 // Correction de la rotation : l'icône pointe vers le sud
-                const iconAngle = (angle + 180) % 360;
+                const iconAngle = (angle + 270) % 360;
                 
                 console.log(`Avion ${f.callsign || "Inconnu"} (${key}) :
                     • Position: [${f.latitude.toFixed(4)}, ${f.longitude.toFixed(4)}]
@@ -104,7 +104,7 @@ require "../src/includes/header.inc.php";
                 // création icône avion rotation direction
                 const icon = L.divIcon({
                     className: '',
-                    html: `<div class="plane-icon" style="transform:rotate(${iconAngle}deg)"></div>`
+                    html: `<div class="plane-icon" style="transform:rotate(${iconAngle}deg)"><i class="fas fa-plane"></i></div>`
                 });
 
                 if (!planeMarkers[key]) {

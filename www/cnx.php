@@ -66,4 +66,4 @@
 
 <?php
     require "../src/includes/footer.inc.php";
-?>//<i class="fas fa-plane"></i>
+?>

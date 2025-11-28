@@ -56,7 +56,7 @@
     ?>
     <title><?=$title?></title>
     <link rel="stylesheet" href="<?= $style; ?>" />
-    <link rel="shortcut icon" type="image/png" href="<?=$logo;?>"/>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
 </head>
 <body>
     <header class="navbar custom-header navbar-expand-lg">
@@ -79,7 +79,7 @@
                         <a class="nav-link" href="search.php">Trouver</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="work.php">Maps</a>
+                        <a class="nav-link" href="carte.php">Maps</a>
                     </li>
                     <li>
                         <a class="nav-link" href="work.php">Statistiques</a>

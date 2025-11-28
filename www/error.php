@@ -5,6 +5,7 @@ $title = "Erreur $code";
 switch($code) {
     case 403: $message = "Accès refusé."; break;
     case 404: $message = "Page introuvable."; break;
+    case 405: $message = "Méthode non autorisé."; break;
     case 500: $message = "Erreur interne du serveur."; break;
     default: $message = "Erreur inconnue."; break;
 }

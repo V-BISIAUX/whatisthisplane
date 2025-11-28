@@ -37,7 +37,7 @@
 
         <section>
             <h2>Supprimer mon compte</h2>
-            <button id="delete-account" class="danger">Supprimer définitivement</button>
+            <button id="delete-account" class="danger btn1" type="submit">Supprimer définitivement</button>
         </section>
     </main>
 

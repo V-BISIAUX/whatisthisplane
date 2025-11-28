@@ -1,5 +1,9 @@
 <?php
     declare(strict_types=1);
+    if (session_status() === PHP_SESSION_NONE && isset($_COOKIE[session_name()])) {
+        session_start();
+    }
+
     $title = "En travaux – WhatisThisPlane";
     require "../src/includes/header.inc.php";
 ?>
