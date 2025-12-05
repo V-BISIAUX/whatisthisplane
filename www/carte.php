@@ -62,9 +62,9 @@ require "../src/includes/header.inc.php";
         </section>
     </main>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/api.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="js/api.js" defer></script>
     <script>
         let map = L.map('map').setView([48.8566, 2.3522], 6); // vue France par défaut
 

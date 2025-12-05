@@ -87,7 +87,8 @@ require "../src/includes/header.inc.php";
 			}
 			output += `<strong>${aircraftName ?? "Avion inconnu"}</strong>`;
 			output += `</div>`;
-			
+			output += `<div class="aircraft-body">`;
+            output += `<div class="aircraft-info">`;
 			output += `<p>ICAO : ${parseData.icao24}</p>`;
 			output += `<p>Callsign : ${parseData.callsign}</p>`;
 			output += `<p>Pays d'origin : ${parseData.origin_country}</p>`;
@@ -95,19 +96,22 @@ require "../src/includes/header.inc.php";
 			output += `<p>Derniere position : ${parseData.last_contact}</p>`;
 			output += `<p>Longitude : ${parseData.longitude}</p>`;
 			output += `<p>Latitude : ${parseData.latitude}</p>`;
-			
+			output += `</div>`;
 			if (photos?.url_photo) {
-				output += `<p>Photos :</p>`;
-				output += `<img class="aircraft-photo" src="${photos.url_photo}" alt="Photo de l'avion">`;
+				output += `<div class="aircraft-photos">`;
+				output += `<img class="aircraft-photo" src="${photos.url_photo}" alt="Photo de l'avion"></div>`;
 
 			} else {
 				output += `<p>Aucune photo disponible</p>`;
 			}
+
+            output += `</div>`;
 			
 			result.innerHTML = output;
 
             if (btnFav) {
                 btnFav.style.display = 'inline-block';
+                btnFav.style.margin = '2%'
 
                 btnFav.dataset.icao = parseData.icao24;
                 btnFav.dataset.callsign = parseData.callsign || '';
