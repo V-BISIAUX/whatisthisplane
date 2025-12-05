@@ -22,7 +22,7 @@
             const messageElem = document.getElementById('message');
 
             try{
-                const response = await fetch(`api/user/reset_password.php?email=` + encodeURIComponent(emailValue));
+                const response = await fetch(`ajax/user/request_password.php?email=` + encodeURIComponent(emailValue));
                 const data = await response.json();
                 if (data.success) {
                     messageElem.style.color = 'green';

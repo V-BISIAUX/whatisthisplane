@@ -49,7 +49,7 @@ class Mailer {
 	 * Envoie l'email de vérification après inscription
 	 */
 	public function sendVerificationEmail(string $to, string $username, string $token, int $expirationSeconds): bool {
-		$verificationUrl = URL . '/ajax/user/verify_email.php?token='.urlencode($token);
+		$verificationUrl = URL . '/active.php?token='.urlencode($token);
 		$expiration = $this->formatTime($expirationSeconds);
 		
 		$subject = "Vérification de votre adresse e-mail";
@@ -78,7 +78,7 @@ class Mailer {
 	 * Envoie un email de réinitialisation de mot de passe
 	 */
 	public function sendPasswordResetEmail(string $to, string $username, string $resetToken, int $expirationSeconds): bool {
-		$resetUrl = URL . 'reset_password.php?token='.urlencode($resetToken);
+		$resetUrl = URL . '/reset_password.php?token='.urlencode($resetToken);
 		$expiration = $this->formatTime($expirationSeconds);
 		
 		$subject = "Réinitialisation de votre mot de passe";

@@ -1,5 +1,7 @@
 <?php
     declare(strict_types=1);
+    require_once __DIR__ . '/../src/config/config.php';
+    require_once '../src/backend/User.php';
     $title = "Activation de votre compte - WhatIsThisPlane";
     require "../src/includes/header.inc.php";
     $token = $_GET['token'] ?? null;
@@ -7,20 +9,18 @@
     $message = null;
 
     if ($token) {
+        $user = new User();
+        $result = $user->verifyEmail($token);
 
-        // Appel de ton API JSON
-        $apiUrl = URL . "/ajax/user/verify_email.php?token=" . urlencode($token);
-
-        $json = file_get_contents($apiUrl);
-        $response = json_decode($json, true);
-
-        if ($response) {
-            $success = $response['success'] ?? false;
-            $message = $response['message'] ?? ($response['error'] ?? "Erreur inconnue");
+        if ($result['success']) {
+            $success = true;
+            $message = $result['message'];
         } else {
             $success = false;
-            $message = "Impossible de contacter le serveur.";
+            $message = $result['error'];
         }
+    } else {
+        $message = "Lien d'activation manquant ou invalide.";
     }
 ?>
 <main>
@@ -28,9 +28,21 @@
 
     <?php if ($message): ?>
         <?php if ($success): ?>
-            <p style="color: green;"><?= htmlspecialchars($message) ?></p>
+            <p style="color: green; font-weight: bold; font-size: 1.2em;">
+                <?= htmlspecialchars($message) ?>
+            </p>
+            <p>
+                <a href="cnx.php" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                    Se connecter
+                </a>
+            </p>
         <?php else: ?>
-            <p style="color: red;"><?= htmlspecialchars($message) ?></p>
+            <p style="color: red; font-weight: bold; font-size: 1.2em;">
+                <?= htmlspecialchars($message) ?>
+            </p>
+            <p>
+                <a href="index.php">Retour à l'accueil</a>
+            </p>
         <?php endif; ?>
     <?php else: ?>
         <p style="color: orange;">Aucun token fourni.</p>
