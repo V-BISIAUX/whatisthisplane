@@ -5,19 +5,19 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://whatisthisplane.alwaysdata.net/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-05T12:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://whatisthisplane.alwaysdata.net/search.php</loc>
-    <lastmod>2025-11-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-05T12:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://whatisthisplane.alwaysdata.net/about.php</loc>
-    <lastmod>2025-11-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-05T12:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -30,12 +30,6 @@
   <url>
     <loc>https://whatisthisplane.alwaysdata.net/inscription.php</loc>
     <lastmod>2025-11-23T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://whatisthisplane.alwaysdata.net/error.php</loc>
-    <lastmod>2025-11-23T00:01:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
