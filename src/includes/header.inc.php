@@ -92,7 +92,10 @@
 
             <div class="right my-3 my-lg-0">
                 <?php if (isset($_SESSION['login'])): ?>
-                    <a href="mon-profile.php">Mon Profil</a>
+                    <ul class="navbar-nav flex-row flex-lg-row gap-3">
+                        <li><a class="nav-link" href="favorites.php">Mes favoris</a></li>
+                        <li><a class="nav-link" href="mon-profile.php">Mon Profil</a></li>
+                    </ul>
                 <?php endif; ?>
                 <a href="cnx.php" class="btn1">Se connecter</a>
                 <a href="<?= $url ?>">

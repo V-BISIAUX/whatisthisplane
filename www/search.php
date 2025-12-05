@@ -18,15 +18,18 @@ require "../src/includes/header.inc.php";
                 <input type="text" id="flight-search" name="flight-search" placeholder="Numéro de vol, avion ou compagnie..." required="required"/>
                 <button type="submit">Rechercher</button>
             </form>
-            <aside id="searchresults" style="display: block">
+            <aside id="searchresults" style="display: none">
                 <h3>Résultats de la recherche de vols</h3>
                 <aside id="results"></aside>
+                <?php if ($_SESSION['login']) : ?>
+                    <button id="btn-add-fav" class="btn1">Ajouter aux favoris</button>
+                <?php endif; ?>
             </aside>
         </section>
 
         <section class="details">
             <h2>Aperçu des avions les plus recherchés</h2>
-            <div class="grille-carte">
+            <div class="grille-cartes">
                 <article class="carte">
                     <h3>Nom de l'avion</h3>
 <!--                    <figure>-->
@@ -53,8 +56,11 @@ require "../src/includes/header.inc.php";
         document.getElementById('form-search').addEventListener('submit', async function(e) {
             e.preventDefault();
             const result = document.getElementById('results');
-            result.style.display = 'block';
+            const btnFav = document.getElementById('btn-add-fav');
+            document.getElementById('searchresults').style.display = 'block';
             const searchValue = document.getElementById('flight-search').value;
+            if(btnFav) btnFav.style.display = 'none';
+
             console.log(searchValue);
             if (!searchValue) {
                 console.log("Champ vide");
@@ -100,7 +106,60 @@ require "../src/includes/header.inc.php";
 			
 			result.innerHTML = output;
 
+            if (btnFav) {
+                btnFav.style.display = 'inline-block';
+
+                btnFav.dataset.icao = parseData.icao24;
+                btnFav.dataset.callsign = parseData.callsign || '';
+                btnFav.dataset.model = aircraftName || '';
+                btnFav.dataset.airline = parseData.origin_country || '';
+
+                btnFav.dataset.origin = '';
+                btnFav.dataset.dest = '';
+
+                btnFav.innerText = "Ajouter aux favoris";
+                btnFav.disabled = false;
+            }
+
         });
+
+        const btnFav = document.getElementById('btn-add-fav');
+
+        if (btnFav) {
+            btnFav.addEventListener('click', async function() {
+                const planeData = {
+                    icao24: btnFav.dataset.icao,
+                    callsign: btnFav.dataset.callsign,
+                    aircraft_model: btnFav.dataset.model,
+                    airline: btnFav.dataset.airline,
+                    origin_iata: btnFav.dataset.origin,
+                    destination_iata: btnFav.dataset.dest
+                };
+
+                try {
+                    const response = await fetch('ajax/favorites/add_favotite.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify(planeData)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        btnFav.innerText = "Ajouté !";
+                        btnFav.disabled = true;
+                    } else {
+                        alert("Erreur : " + (result.error || "Inconnue"));
+                        btnFav.disabled = false;
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert("Erreur de connexion au serveur");
+                    btnFav.disabled = false;
+                }
+            });
+        }
     </script>
     <script src="js/api.js"></script>
 <?php

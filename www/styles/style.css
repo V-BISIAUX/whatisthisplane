@@ -142,6 +142,7 @@ header a img {
 
 main {
     max-width: 1300px;
+    width: 100%;
     margin: 20px auto;
     padding: 30px;
     background-color: #f8fafc;
@@ -374,9 +375,10 @@ article p {
 
 .grille-cartes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
     margin-top: 30px;
+    justify-content: center;
 }
 
 .carte figure {
@@ -502,8 +504,8 @@ section {
 
 @media only screen and (max-width: 576px){
     main {
-        width: 90%;
-        margin: 5% auto;
+        width: 95%;
+        margin: 5% 2% 5% 2%;
     }
 
     main > h1 {
@@ -535,6 +537,8 @@ section {
 
     section {
         width: 100%;
+        margin: 5% 0;
+        justify-content: center;
     }
 
     .image figure img {
@@ -548,6 +552,10 @@ section {
     main p, .hero p {
         font-size: 16px;
     }
+
+    /*.res-link {*/
+    /*    flex-direction: column;*/
+    /*}*/
 
     .work {
         width: 260px;
