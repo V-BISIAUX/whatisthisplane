@@ -88,6 +88,11 @@ class User {
 		if (!checkdnsrr($domain, 'MX')) {
 			return ['success' => false, 'error' => "Le domaine de l'email ne semble pas recevoir des emails."];
 		}
+		
+		// Vérifier doublon username
+		if ($this->usernameExists($username)) {
+			return ['success' => false, 'error' => "Ce nom d'utilisateur est déjà utilisé"];
+		}
         
         // Préparer les données
         $hashedPassword = $this->hashPassword($password);
@@ -364,6 +369,46 @@ class User {
         
         return ['success' => true, 'message' => "Compte supprimé"];
     }
+
+    /**
+     * Supprime les comptes crees sans etre activé au bout de 24h
+     */
+    public function deleteAccountNotActif() : int
+    {
+        try{
+            $sql = "DELETE FROM users
+                    WHERE email_verified = 0
+                    AND created_at < (NOW() - INTERVAL 1 HOUR)";
+
+            $stmt = $this->mysqli->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->affected_rows;
+        } catch (Exception $e){
+            echo "Erreur SQL : " . $e->getMessage();
+            return 0;
+        }
+    }
+
+    public function statistiques() : array
+    {
+        try{
+            $sql = "SELECT COUNT(*) AS nombre, aircraft_model 
+                    FROM airplane_seen 
+                    NATURAL JOIN airplanes 
+                    GROUP BY aircraft_model 
+                    ORDER BY nombre DESC LIMIT 10";
+
+            $stmt = $this->mysqli->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }catch (Exception $e){
+            echo "Erreur SQL : " . $e->getMessage();
+            return [];
+        }
+    }
     
     // ============================================
     // MÉTHODES PRIVÉES - VALIDATION
@@ -471,6 +516,25 @@ class User {
         
         return $exists;
     }
+	
+	/**
+	 * Vérifie si un username existe déjà
+	 */
+	private function usernameExists(string $username): bool {
+		$stmt = $this->mysqli->prepare("SELECT user_id FROM users WHERE username = ? LIMIT 1");
+		
+		if (!$stmt) {
+			throw new Exception('Erreur préparation requête : ' . $this->mysqli->error);
+		}
+		
+		$stmt->bind_param('s', $username);
+		$stmt->execute();
+		$stmt->store_result();
+		$exists = $stmt->num_rows > 0;
+		$stmt->close();
+		
+		return $exists;
+	}
     
     /**
      * Insère un nouvel utilisateur en BDD

@@ -390,7 +390,7 @@
 			grid.appendChild(card);
 		}
 
-		function expandCard(data) {
+		async function expandCard(data) {
 			const overlay = document.getElementById("overlay");
 			const expandedImage = document.getElementById("expandedImage");
 			const expandedContent = document.getElementById("expandedContent");
@@ -432,6 +432,23 @@
 					</div>
 				</div>
 			`;
+			
+			try {
+				await fetch('ajax/planes/add_airplane.php', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					credentials: 'include',
+					body: JSON.stringify({
+						icao24: data.icao24,
+						callsign: data.callsign,
+						aircraft_model: data.model,
+						airline: data.airline || null,
+						view_source: 'map'
+					})
+				});
+			} catch (error) {
+				console.error('Erreur lors de l\'enregistrement de la consultation:', error);
+			}
 			
 			if (btnFav) {
 				btnFav.style.display = "inline-block";
