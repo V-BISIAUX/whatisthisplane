@@ -220,7 +220,7 @@ form {
     justify-content: center;
     transition: transform 0.3s ease;
     max-width: 1200px;
-    width: 100%;
+    width: 700px;
     gap: 10px;
 }
 
@@ -523,6 +523,21 @@ section {
     gap: 5px;
 }
 
+#aside-form {
+    padding: 20px;
+    margin: 40px auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: white;
+    width: 700px;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 @media only screen and (max-width: 576px){
     main {
         width: 95%;
@@ -614,5 +629,9 @@ section {
 
     .aircraft-body {
         flex-direction: column;
+    }
+
+    #aside-form {
+        width: 100%;
     }
 }
