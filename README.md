@@ -13,23 +13,31 @@
 - [Dépot GitHub](https://github.com/V-BISIAUX/whatisthisplane/)
 
 ## Description de la plateforme
+**WhatIsThisPlane** est une application web pour trouver des informations sur les avions.
+Elle permet aussi de voir les avions les plus recherchés sur la plateforme, elle offre la possibilité aux usagers de faire des recherches par nom d'avions, de code d'aéroport, de compagnie et meme par code ICAO (Le code ICAO est l'identifiant unique attribué à chaque aéroport ou compagnie par l'Organisation de l'aviation civile internationale).
+Le site permet aussi aux utilisateurs connectés de gérer leur profil et de conserver une liste d'avions favoris.
+
+### Objectifs du projet
+- Mettre en pratique le développement web dynamique (HTML, CSS, JS et PHP).
+- Apprendre à gérer une base de données SQL et à faire le lien avec le site.
+- Utiliser **AJAX** pour récupérer et afficher les données sans recharger la page.
+- Créer un système d'authentification sécurisé (inscription, connexion, sessions).
 
 ## Fonctionnalités
-
 ### Voir l'avion au-dessus de vous
-
+Utilisation de la géolocalisation pour identifier les avions à proximité.
 ### Rechercher un vol
-
+Recherche par nom, compagnie ou code ICAO
 ### Fiche détaillée des avions
-
+Affichage des informations techniques de l'avion.
 ### Carte du trafic aérien
-
-### Créer un compte
-
+Visualisation des positions des avions sur une carte interactive.
+### Espace compte
+Inscription, connexion et gestion du profil.
 ### Donnée historique
-
+Consultation des avions les plus recherchés.
 ### Envoi de mail
-
+Notifications par email (ex: mail d'activation du compte lors de l'inscription).
 ### APIs
 Ce projet interagit avec plusieurs API publiques pour récupérer des informations sur le trafic aérien et la géolocalisation.
 - **Format JSON & XML** : Les données sont récupérées depuis plusieurs APIs qui renvoient des données en format JSON ou XML.
@@ -55,3 +63,4 @@ Ce projet repose sur un ensemble cohérent de technologies web modernes, couvran
 - **APIs utilisées** : Open Sky Network, ADSBdb, IP-API - voir la section [API](#apis).
 - **Base de donnée** : MySQL
 - **Visualisation des statistiques** : **Chart JS**
+- **Hébergement** : Alwaysdata.
