@@ -1,0 +1,25 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"class_mailer.html":[0,0,0],
+"class_mailer.html#a2164f2029497987981fdf97de69d6581":[0,0,0,1],
+"class_mailer.html#a6519b0b14f9b9d13ad6371f3cadce21b":[0,0,0,0],
+"class_mailer.html#afea76b6b1ec4fcddee8e099040c1896d":[0,0,0,2],
+"class_user.html":[0,0,1],
+"class_user.html#a2b48d3676c286635b1061d68c3a6e918":[0,0,1,4],
+"class_user.html#a31352f17a65545d25ac2703b3640c823":[0,0,1,2],
+"class_user.html#a50ba958f8da0a7bc573aefb6a40978cf":[0,0,1,5],
+"class_user.html#a5cb47b11cdca2ff650caed4c1ec23dbf":[0,0,1,10],
+"class_user.html#a62a68e22ea24bde38c88e9c1363309b4":[0,0,1,8],
+"class_user.html#a9185940bca3b7d890e1320d10146aefc":[0,0,1,3],
+"class_user.html#aa4534fa70738247a798af856414b9aae":[0,0,1,6],
+"class_user.html#ab85808b180763aae0ad612ddac38f630":[0,0,1,0],
+"class_user.html#accd20149a7414612c1505e022eb63ffc":[0,0,1,1],
+"class_user.html#adb80aa1ac0538d3114764530e6701ce4":[0,0,1,7],
+"class_user.html#add78ae6edda7bfb24a698b624c2f6346":[0,0,1,9],
+"classes.html":[0,1],
+"functions.html":[0,2,0],
+"functions_func.html":[0,2,1],
+"index.html":[],
+"pages.html":[]
+};

@@ -1,0 +1,40 @@
+\doxysection{Mailer Class Reference}
+\hypertarget{class_mailer}{}\label{class_mailer}\index{Mailer@{Mailer}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mailer_a6519b0b14f9b9d13ad6371f3cadce21b}{send}} (string \$to, string \$subject, string \$html\+Body)
+\item 
+\mbox{\hyperlink{class_mailer_afea76b6b1ec4fcddee8e099040c1896d}{send\+Verification\+Email}} (string \$to, string \$username, string \$token, int \$expiration\+Seconds)
+\item 
+\Hypertarget{class_mailer_a3500fc8ccf32be6d75010d3c3d0df374}\label{class_mailer_a3500fc8ccf32be6d75010d3c3d0df374} 
+{\bfseries format\+Time} (int \$seconds)
+\item 
+\mbox{\hyperlink{class_mailer_a2164f2029497987981fdf97de69d6581}{send\+Password\+Reset\+Email}} (string \$to, string \$username, string \$reset\+Token, int \$expiration\+Seconds)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mailer_a6519b0b14f9b9d13ad6371f3cadce21b}\index{Mailer@{Mailer}!send@{send}}
+\index{send@{send}!Mailer@{Mailer}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily \label{class_mailer_a6519b0b14f9b9d13ad6371f3cadce21b} 
+Mailer\+::send (\begin{DoxyParamCaption}\item[{string}]{\$to}{, }\item[{string}]{\$subject}{, }\item[{string}]{\$html\+Body}{}\end{DoxyParamCaption})}
+
+Envoie un email générique avec un corps HTML personnalisé \Hypertarget{class_mailer_a2164f2029497987981fdf97de69d6581}\index{Mailer@{Mailer}!sendPasswordResetEmail@{sendPasswordResetEmail}}
+\index{sendPasswordResetEmail@{sendPasswordResetEmail}!Mailer@{Mailer}}
+\doxysubsubsection{\texorpdfstring{sendPasswordResetEmail()}{sendPasswordResetEmail()}}
+{\footnotesize\ttfamily \label{class_mailer_a2164f2029497987981fdf97de69d6581} 
+Mailer\+::send\+Password\+Reset\+Email (\begin{DoxyParamCaption}\item[{string}]{\$to}{, }\item[{string}]{\$username}{, }\item[{string}]{\$reset\+Token}{, }\item[{int}]{\$expiration\+Seconds}{}\end{DoxyParamCaption})}
+
+Envoie un email de réinitialisation de mot de passe \Hypertarget{class_mailer_afea76b6b1ec4fcddee8e099040c1896d}\index{Mailer@{Mailer}!sendVerificationEmail@{sendVerificationEmail}}
+\index{sendVerificationEmail@{sendVerificationEmail}!Mailer@{Mailer}}
+\doxysubsubsection{\texorpdfstring{sendVerificationEmail()}{sendVerificationEmail()}}
+{\footnotesize\ttfamily \label{class_mailer_afea76b6b1ec4fcddee8e099040c1896d} 
+Mailer\+::send\+Verification\+Email (\begin{DoxyParamCaption}\item[{string}]{\$to}{, }\item[{string}]{\$username}{, }\item[{string}]{\$token}{, }\item[{int}]{\$expiration\+Seconds}{}\end{DoxyParamCaption})}
+
+Envoie l\textquotesingle{}email de vérification après inscription 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/backend/Mailer.\+php\end{DoxyCompactItemize}

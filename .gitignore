@@ -9,7 +9,8 @@
 **/config.php
 *.log
 
-
+!/docs/
+!Doxyfile
 !.gitignore
 !README.md
 !.htaccess

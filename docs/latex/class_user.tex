@@ -1,0 +1,218 @@
+\doxysection{User Class Reference}
+\hypertarget{class_user}{}\label{class_user}\index{User@{User}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_ab85808b180763aae0ad612ddac38f630}{\+\_\+\+\_\+construct}} ()
+\item 
+\mbox{\hyperlink{class_user_accd20149a7414612c1505e022eb63ffc}{\+\_\+\+\_\+destruct}} ()
+\item 
+\mbox{\hyperlink{class_user_adb80aa1ac0538d3114764530e6701ce4}{register}} (string \$username, string \$email, string \$password, string \$prenom, string \$nom)
+\item 
+\mbox{\hyperlink{class_user_aa4534fa70738247a798af856414b9aae}{login}} (string \$identifier, string \$password)
+\item 
+\mbox{\hyperlink{class_user_a5cb47b11cdca2ff650caed4c1ec23dbf}{verify\+Email}} (string \$token)
+\item 
+\mbox{\hyperlink{class_user_a50ba958f8da0a7bc573aefb6a40978cf}{get\+Profile}} (int \$user\+Id)
+\item 
+\mbox{\hyperlink{class_user_a31352f17a65545d25ac2703b3640c823}{change\+Password}} (int \$user\+Id, string \$old\+Password, string \$new\+Password)
+\item 
+\mbox{\hyperlink{class_user_a62a68e22ea24bde38c88e9c1363309b4}{request\+Password\+Reset}} (string \$email)
+\item 
+\mbox{\hyperlink{class_user_add78ae6edda7bfb24a698b624c2f6346}{reset\+Password}} (string \$token, string \$new\+Password)
+\item 
+\mbox{\hyperlink{class_user_a9185940bca3b7d890e1320d10146aefc}{delete\+Account}} (int \$user\+Id, string \$password)
+\item 
+\mbox{\hyperlink{class_user_a2b48d3676c286635b1061d68c3a6e918}{delete\+Account\+Not\+Actif}} ()
+\item 
+\Hypertarget{class_user_aeb31555ceff8bf7714b360a5c132181d}\label{class_user_aeb31555ceff8bf7714b360a5c132181d} 
+{\bfseries statistiques} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe \doxylink{class_user}{User} -\/ Gestion des utilisateurs
+
+Responsabilités \+:
+\begin{DoxyItemize}
+\item Inscription et validation email
+\item Connexion et authentification
+\item Gestion du profil utilisateur
+\item Modification mot de passe
+\item Suppression de compte 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_user_ab85808b180763aae0ad612ddac38f630}\index{User@{User}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!User@{User}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \label{class_user_ab85808b180763aae0ad612ddac38f630} 
+User\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Constructeur -\/ Initialise la connexion à la base de données 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Si la connexion échoue \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_user_accd20149a7414612c1505e022eb63ffc}\index{User@{User}!\_\_destruct@{\_\_destruct}}
+\index{\_\_destruct@{\_\_destruct}!User@{User}}
+\doxysubsubsection{\texorpdfstring{\_\_destruct()}{\_\_destruct()}}
+{\footnotesize\ttfamily \label{class_user_accd20149a7414612c1505e022eb63ffc} 
+User\+::\+\_\+\+\_\+destruct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Destructeur -\/ Ferme la connexion à la base de données 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_user_a31352f17a65545d25ac2703b3640c823}\index{User@{User}!changePassword@{changePassword}}
+\index{changePassword@{changePassword}!User@{User}}
+\doxysubsubsection{\texorpdfstring{changePassword()}{changePassword()}}
+{\footnotesize\ttfamily \label{class_user_a31352f17a65545d25ac2703b3640c823} 
+User\+::change\+Password (\begin{DoxyParamCaption}\item[{int}]{\$user\+Id}{, }\item[{string}]{\$old\+Password}{, }\item[{string}]{\$new\+Password}{}\end{DoxyParamCaption})}
+
+Change le mot de passe d\textquotesingle{}un utilisateur
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+Id} & ID de l\textquotesingle{}utilisateur \\
+\hline
+string & {\em \$old\+Password} & Ancien mot de passe \\
+\hline
+string & {\em \$new\+Password} & Nouveau mot de passe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}message\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} string\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_user_a9185940bca3b7d890e1320d10146aefc}\index{User@{User}!deleteAccount@{deleteAccount}}
+\index{deleteAccount@{deleteAccount}!User@{User}}
+\doxysubsubsection{\texorpdfstring{deleteAccount()}{deleteAccount()}}
+{\footnotesize\ttfamily \label{class_user_a9185940bca3b7d890e1320d10146aefc} 
+User\+::delete\+Account (\begin{DoxyParamCaption}\item[{int}]{\$user\+Id}{, }\item[{string}]{\$password}{}\end{DoxyParamCaption})}
+
+Supprime le compte d\textquotesingle{}un utilisateur
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+Id} & ID de l\textquotesingle{}utilisateur \\
+\hline
+string & {\em \$password} & Mot de passe de confirmation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}message\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} string\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_user_a2b48d3676c286635b1061d68c3a6e918}\index{User@{User}!deleteAccountNotActif@{deleteAccountNotActif}}
+\index{deleteAccountNotActif@{deleteAccountNotActif}!User@{User}}
+\doxysubsubsection{\texorpdfstring{deleteAccountNotActif()}{deleteAccountNotActif()}}
+{\footnotesize\ttfamily \label{class_user_a2b48d3676c286635b1061d68c3a6e918} 
+User\+::delete\+Account\+Not\+Actif (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Supprime les comptes crees sans etre activé au bout de 24h \Hypertarget{class_user_a50ba958f8da0a7bc573aefb6a40978cf}\index{User@{User}!getProfile@{getProfile}}
+\index{getProfile@{getProfile}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getProfile()}{getProfile()}}
+{\footnotesize\ttfamily \label{class_user_a50ba958f8da0a7bc573aefb6a40978cf} 
+User\+::get\+Profile (\begin{DoxyParamCaption}\item[{int}]{\$user\+Id}{}\end{DoxyParamCaption})}
+
+Récupère le profil d\textquotesingle{}un utilisateur
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$user\+Id} & ID de l\textquotesingle{}utilisateur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}user\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} mixed\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_user_aa4534fa70738247a798af856414b9aae}\index{User@{User}!login@{login}}
+\index{login@{login}!User@{User}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily \label{class_user_aa4534fa70738247a798af856414b9aae} 
+User\+::login (\begin{DoxyParamCaption}\item[{string}]{\$identifier}{, }\item[{string}]{\$password}{}\end{DoxyParamCaption})}
+
+Connecte un utilisateur
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$identifier} & Email ou nom d\textquotesingle{}utilisateur \\
+\hline
+string & {\em \$password} & Mot de passe en clair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}user\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} mixed\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_user_adb80aa1ac0538d3114764530e6701ce4}\index{User@{User}!register@{register}}
+\index{register@{register}!User@{User}}
+\doxysubsubsection{\texorpdfstring{register()}{register()}}
+{\footnotesize\ttfamily \label{class_user_adb80aa1ac0538d3114764530e6701ce4} 
+User\+::register (\begin{DoxyParamCaption}\item[{string}]{\$username}{, }\item[{string}]{\$email}{, }\item[{string}]{\$password}{, }\item[{string}]{\$prenom}{, }\item[{string}]{\$nom}{}\end{DoxyParamCaption})}
+
+Inscrit un nouvel utilisateur
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$username} & Nom d\textquotesingle{}utilisateur \\
+\hline
+string & {\em \$email} & Email \\
+\hline
+string & {\em \$password} & Mot de passe en clair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}message\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} string\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_user_a62a68e22ea24bde38c88e9c1363309b4}\index{User@{User}!requestPasswordReset@{requestPasswordReset}}
+\index{requestPasswordReset@{requestPasswordReset}!User@{User}}
+\doxysubsubsection{\texorpdfstring{requestPasswordReset()}{requestPasswordReset()}}
+{\footnotesize\ttfamily \label{class_user_a62a68e22ea24bde38c88e9c1363309b4} 
+User\+::request\+Password\+Reset (\begin{DoxyParamCaption}\item[{string}]{\$email}{}\end{DoxyParamCaption})}
+
+Demande une réinitialisation de mot de passe (envoie email avec token)
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$email} & Email de l\textquotesingle{}utilisateur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}message\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} string\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_user_add78ae6edda7bfb24a698b624c2f6346}\index{User@{User}!resetPassword@{resetPassword}}
+\index{resetPassword@{resetPassword}!User@{User}}
+\doxysubsubsection{\texorpdfstring{resetPassword()}{resetPassword()}}
+{\footnotesize\ttfamily \label{class_user_add78ae6edda7bfb24a698b624c2f6346} 
+User\+::reset\+Password (\begin{DoxyParamCaption}\item[{string}]{\$token}{, }\item[{string}]{\$new\+Password}{}\end{DoxyParamCaption})}
+
+Réinitialise le mot de passe via token (sans ancien mot de passe)
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$token} & Token de réinitialisation \\
+\hline
+string & {\em \$new\+Password} & Nouveau mot de passe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}message\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} string\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{class_user_a5cb47b11cdca2ff650caed4c1ec23dbf}\index{User@{User}!verifyEmail@{verifyEmail}}
+\index{verifyEmail@{verifyEmail}!User@{User}}
+\doxysubsubsection{\texorpdfstring{verifyEmail()}{verifyEmail()}}
+{\footnotesize\ttfamily \label{class_user_a5cb47b11cdca2ff650caed4c1ec23dbf} 
+User\+::verify\+Email (\begin{DoxyParamCaption}\item[{string}]{\$token}{}\end{DoxyParamCaption})}
+
+Valide l\textquotesingle{}email d\textquotesingle{}un utilisateur via token
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$token} & Token de vérification \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \mbox{[}\textquotesingle{}success\textquotesingle{} =\texorpdfstring{$>$}{>} bool, \textquotesingle{}message\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}error\textquotesingle{} =\texorpdfstring{$>$}{>} string\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/backend/User.\+php\end{DoxyCompactItemize}
