@@ -44,6 +44,7 @@ Ce projet interagit avec plusieurs API publiques pour récupérer des informatio
 - [OpenSky Network](https://opensky-network.org/api/states/all) : Fournit des données en temps réel sur les avions, telles que la position, la vitesse et l’altitude.
 - [ADSBdb API](https://api.adsbdb.com/v0/) : Permet d’obtenir des informations détaillées sur un avion à partir de son identifiant ICAO (code hexadécimal).
 - [IP-API](http://ip-api.com/json/) : Fournit la géolocalisation approximative d’un utilisateur à partir de son adresse IP.
+- [Aviation Stack](http://api.aviationstack.com/v1) : Fournit des données mondiales sur les vols, incluant les horaires, les statuts en temps réel et les informations sur les compagnies aériennes.
 
 ## Technologies
 Ce projet repose sur un ensemble cohérent de technologies web modernes, couvrant à la fois le front-end, le back-end, la base de données, et la visualisation des données aéronautiques.
