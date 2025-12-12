@@ -77,7 +77,7 @@
         let map = L.map('map').setView([48.8566, 2.3522], 6); // vue France par défaut
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: "&copy; OpenStreetMap"
+            attribution: "&#169; OpenStreetMap"
         }).addTo(map);
 
         let planeMarkers = {}; // stocke les marqueurs des avions en fonction de leur icao24

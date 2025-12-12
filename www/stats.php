@@ -22,6 +22,7 @@
                     <figcaption>Histogramme des avions les plus consultées du site</figcaption>
                 </figure>
             </article>
+        </section>
             <script>
                 async function initChart() {
                     const response = await fetch('ajax/user/data_stats.php');

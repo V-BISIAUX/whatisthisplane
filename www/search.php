@@ -90,7 +90,7 @@
 			output += `<div class="aircraft-header">`;
 
 			if (photos?.url_photo_thumbnail) {
-				output += `<img src="${photos.url_photo_thumbnail}" alt="Miniature avion">`;
+				output += `<img src="${photos.url_photo_thumbnail}" alt="Miniature avion"/>`;
 			}
 
 			output += `<strong>${aircraftName ?? "Avion inconnu"}</strong></div>`;
@@ -106,7 +106,7 @@
 
 			if (photos?.url_photo) {
 				output += `<div class="aircraft-photos">`;
-				output += `<img class="aircraft-photo" src="${photos.url_photo}" alt="Photo de l'avion"></div>`;
+				output += `<img class="aircraft-photo" src="${photos.url_photo}" alt="Photo de l'avion"/></div>`;
 			} else {
 				output += `<p>Aucune photo disponible</p>`;
 			}

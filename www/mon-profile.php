@@ -6,6 +6,7 @@
         exit;
     }
 
+    $description = "Gérez vos paramètres personnels et sécurisez l'accès à votre compte. Modifiez vos informations en quelques clics.";
     $title = "Mon Profil - WhatIsThisPlane";
     require "../src/includes/header.inc.php";
 ?>

@@ -71,7 +71,7 @@
             <input type="email" name="email" id="email" placeholder="Email" required="required"/>
             <label for="questions">Questions</label>
             <textarea name="questions" id="questions" cols="30" rows="10"></textarea>
-            <input type="submit">
+            <input type="submit"/>
         </form>
     </section>
 </main>

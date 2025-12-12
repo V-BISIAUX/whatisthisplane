@@ -1,8 +1,7 @@
     <button id="gototop">&#8593;</button>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/gestion_cookies.js"></script>
-    <script src="js/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/gestion_cookies.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <footer>
         <div class="footer-content">
             <div class="footer-section">
