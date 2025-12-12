@@ -1,5 +1,8 @@
 // api.js - Module d'intégration des API
 
+const URL_PLANE = 'https://whatisthisplane.alwaysdata.net/ajax/planes';
+const URL_FAVORITE = 'https://whatisthisplane.alwaysdata.net/ajax/favorites';
+
 // ============================================
 // 1. OPENSKY NETWORK API
 // ============================================
@@ -228,85 +231,6 @@ async function getBigDataCloudLocation() {
     }
 }
 
-async function getGPSLocation() {
-    return new Promise((resolve, reject) => {
-        if (!navigator.geolocation) {
-            reject(new Error('Géolocalisation non supportée par ce navigateur'));
-            return;
-        }
-
-        console.log('Demande de permission GPS...');
-        
-        navigator.geolocation.getCurrentPosition(
-            async (position) => {
-                const lat = position.coords.latitude;
-                const lon = position.coords.longitude;
-                const accuracy = position.coords.accuracy;
-                
-                console.log(`GPS: ${lat}, ${lon} (précision: ±${accuracy}m)`);
-                
-                // Reverse geocoding avec Nominatim
-                try {
-                    const response = await fetch(
-                        `https://nominatim.openstreetmap.org/reverse?` +
-                        `lat=${lat}&lon=${lon}&format=json&addressdetails=1`,
-                        {
-                            headers: {
-                                'User-Agent': 'SkyTracker/1.0 (contact@skytracker.com)'
-                            }
-                        }
-                    );
-                    const data = await response.json();
-                    
-                    resolve({
-                        lat: lat,
-                        lon: lon,
-                        accuracy: accuracy,
-                        city: data.address.city || data.address.town || data.address.village || 'Inconnu',
-                        postcode: data.address.postcode || '',
-                        suburb: data.address.suburb || '',
-                        country: data.address.country || 'France',
-                        full_address: data.display_name,
-                        method: 'GPS'
-                    });
-                } catch (error) {
-                    // Même si le reverse geocoding échoue, on a les coordonnées GPS
-                    resolve({
-                        lat: lat,
-                        lon: lon,
-                        accuracy: accuracy,
-                        city: 'Position GPS',
-                        country: 'Détectée',
-                        method: 'GPS'
-                    });
-                }
-            },
-            (error) => {
-                let errorMsg = 'Erreur inconnue';
-                switch(error.code) {
-                    case error.PERMISSION_DENIED:
-                        errorMsg = 'Permission refusée par l\'utilisateur';
-                        break;
-                    case error.POSITION_UNAVAILABLE:
-                        errorMsg = 'Position GPS non disponible';
-                        break;
-                    case error.TIMEOUT:
-                        errorMsg = 'Délai d\'attente GPS dépassé';
-                        break;
-                }
-                console.error('GPS échoué:', errorMsg);
-                reject(new Error(errorMsg));
-            },
-            {
-                enableHighAccuracy: true,  // 📍 Active le GPS haute précision
-                timeout: 10000,            // Attend 10 secondes max
-                maximumAge: 0              // Force une nouvelle position (pas de cache)
-            }
-        );
-    });
-}
-
-
 /**
  * Récupérer les avions proches d'une position
  * @param {number} radius - rayon en degrés (~1° = 111 km)
@@ -344,7 +268,7 @@ async function getNearbyFlights(radius = 1, lat = null, lon = null) {
  */
 async function addToFavorites(planeData) {
     try {
-        const response = await fetch(`${API_BASE_URL}/add_favorite.php`, {
+        const response = await fetch(`${URL_FAVORITE}/add_favorite.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -370,7 +294,7 @@ async function addToFavorites(planeData) {
  */
 async function removeFromFavorites(icao24) {
     try {
-        const response = await fetch(`${API_BASE_URL}/remove_favorite.php`, {
+        const response = await fetch(`${URL_FAVORITE}/remove_favorite.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({icao24})
@@ -387,9 +311,9 @@ async function removeFromFavorites(icao24) {
  */
 async function getUserFavorites() {
     try {
-        const response = await fetch(`${API_BASE_URL}/get_favorites.php`);
+        const response = await fetch(`${URL_FAVORITE}/get_favorite.php`);
         const data = await response.json();
-        return data.favorites || [];
+        return data;
     } catch (error) {
         console.error('Erreur récupération favoris:', error);
         return [];
@@ -401,7 +325,7 @@ async function getUserFavorites() {
  */
 async function searchAirplaneInDB(icao24) {
     try {
-        const response = await fetch(`${API_BASE_URL}/search_airplane.php?icao24=${icao24}`);
+        const response = await fetch(`${URL_PLANE}/search_airplane.php?icao24=${icao24}`);
         return await response.json();
     } catch (error) {
         console.error('Erreur recherche avion:', error);
