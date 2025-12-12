@@ -62,13 +62,10 @@ try {
         exit;
     }
 	
-	if (!isset($_SESSION['user_id'])) {
-        http_response_code(401);
-        echo json_encode(['success' => false, 'error' => 'Utilisateur non connecté']);
-        exit;
-    }
-    
-    $userId = (int)$_SESSION['user_id'];
+	$userId = null;
+	if (isset($_SESSION['user_id'])) {
+		$userId = (int)$_SESSION['user_id'];
+	}
     
     $pdo = getConnection();
     
