@@ -1,5 +1,6 @@
 <?php
     declare(strict_types=1);
+    $description = "Créez un compte WhatIsThisPlane, pour pouvoir accéder à plusieurs fonctionnalités intéressantes.";
     $title = "Créer un compte – WhatisThisPlane";
     require_once "../src/config/config.php";
     require "../src/includes/header.inc.php";
@@ -41,8 +42,9 @@
             <input type="submit" value="S'inscrire"/>
             <span id="message"></span>
         </form>
-
-        <span>Si vous avez un compte, <a href="cnx.php">cliquez ici pour vous connecter</a></span>
+        <aside id="aside-form">
+            <span>Si vous avez un compte, <a href="cnx.php">cliquez ici pour vous connecter</a></span>
+        </aside>
     </main>
     <script>
         document.getElementById('subscribe-form').addEventListener('submit', function(event){

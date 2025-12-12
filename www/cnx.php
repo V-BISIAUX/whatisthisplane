@@ -1,6 +1,7 @@
 <?php
     declare(strict_types=1);
     session_start();
+    $description = "Connectez à votre compte WhatIsThisPlane, pour pouvoir ajouté des avions en favoris, gérez votre sauvegarde et votre profile.";
     $title = "Se connecter à WhatisThisPlane pour identifier les avions";
     require_once "../src/config/config.php";
     require "../src/includes/header.inc.php";
@@ -24,7 +25,9 @@
             <input type="submit" value="Connexion"/>
             <span id="message"></span>
         </form>
-        <span>Si vous n'avez pas de compte, <a href="inscription.php">cliquez pour s'inscrire</a></span>
+        <aside id="aside-form">
+            <span>Si vous n'avez pas de compte, <a href="inscription.php">cliquez pour s'inscrire</a></span>
+        </aside>
     </main>
 
     <script>

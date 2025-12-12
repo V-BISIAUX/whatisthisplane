@@ -9,9 +9,9 @@
                 <h3>Liens utiles</h3>
                 <ul>
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="#">Trouver</a></li>
-                    <li><a href="#">Maps</a></li>
-                    <li><a href="#">Statistiques</a></li>
+                    <li><a href="search.php">Trouver</a></li>
+                    <li><a href="carte.php">Maps</a></li>
+                    <li><a href="stats.php">Statistiques</a></li>
                     <li><a href="about.php">A propos</a></li>
                 </ul>
             </div>

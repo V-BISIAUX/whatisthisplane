@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="keywords" content="WhatIsThisPlane,What Is This Plane,rechercher les avions au-dessus de nous,Quel avion au-dessus de moi,trouver avion au-dessus de moi"/>
     <meta name="location" content="Université CY / projet UE en Développement Web, France"/>
-    <meta name="description" content="Suivez en temps réel les avions autour de vous. Whatisthisplane affiche la position, la trajectoire et les informations de chaque vol grâce à une carte interactive.">
+    <meta name="description" content="<?=$description?>"/>
     <meta name="application-name" content="Whatisthisplane">
     <meta name="apple-mobile-web-app-title" content="Whatisthisplane">
     <meta name="og:site_name" content="Whatisthisplane">
@@ -56,7 +56,11 @@
     ?>
     <title><?=$title?></title>
     <link rel="stylesheet" href="<?= $style; ?>" />
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+    <link rel="manifest" href="images/site.webmanifest" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
     <header class="navbar custom-header navbar-expand-lg">
@@ -82,7 +86,7 @@
                         <a class="nav-link" href="carte.php">Maps</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="work.php">Statistiques</a>
+                        <a class="nav-link" href="stats.php">Statistiques</a>
                     </li>
                     <li>
                         <a class="nav-link" href="about.php">A propos</a>

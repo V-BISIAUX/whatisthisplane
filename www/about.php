@@ -4,6 +4,7 @@
         session_start();
     }
 
+    $description = "Découvrez les membres de l'équipe qui ont realisé WhatIsThisPlane ! Accédez à leurs contacts, les compétences de chacun, et entrez facilement en contact avec l'équipe.";
     $title = "À propos de WhatisThisPlane – Tout savoir sur notre mission";
     require "../src/includes/header.inc.php";
 ?>
