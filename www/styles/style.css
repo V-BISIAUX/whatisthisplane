@@ -1050,6 +1050,7 @@ section {
     justify-content: center;
     border-radius: 50%;
 }
+
 .close-btn:hover {
     color: #333;
     background: #f0f0f0;
