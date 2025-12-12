@@ -38,7 +38,12 @@
 
         <section>
             <h2>Supprimer mon compte</h2>
-            <button id="delete-account" class="danger btn1" type="submit">Supprimer définitivement</button>
+            <form method="post" id="delete-account-form">
+                <label for="password_confirm">Votre mot de passe actuel</label>
+                <input type="password" name="password_confirm" id="password_confirm" required="required"/>
+                <button id="delete-account" class="danger btn1" type="submit" style="color: red">Supprimer définitivement</button>
+                <span id="deleteMessage"></span>
+            </form>
         </section>
     </main>
 
@@ -97,6 +102,44 @@
                 } else {
                     messageElem.style.color = 'red';
                     messageElem.textContent = data.error || 'Erreur lors du changement du mot de passe';
+                }
+            }catch (err){
+                console.log(err);
+            }
+        }
+
+        document.getElementById('delete-account-form').addEventListener('submit', function(event){
+            event.preventDefault();
+            if (confirm('Êtes-vous VRAIMENT sûr ? Cette action est irréversible.')) {
+                deleteProfile();
+            }
+        });
+        async function deleteProfile() {
+            const current_password = document.getElementById("password_confirm").value;
+
+            try{
+                const response = await fetch('ajax/user/deleteAccount.php', {
+                    method:"POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body:JSON.stringify({
+                        current_password: current_password,
+                    })
+                });
+
+                const data = await response.json();
+                const messageElem = document.getElementById('deleteMessage');
+                if (data.success) {
+                    messageElem.style.color = 'green';
+                    messageElem.textContent = data.message;
+
+                    setTimeout(() => {
+                        window.location.href = "../index.php";
+                    }, 1500);
+                } else {
+                    messageElem.style.color = 'red';
+                    messageElem.textContent = data.error || 'Erreur lors de la suppression du compte';
                 }
             }catch (err){
                 console.log(err);
