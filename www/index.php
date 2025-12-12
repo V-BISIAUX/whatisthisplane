@@ -4,6 +4,7 @@
         session_start();
     }
 
+    $description = "Suivez en temps réel les avions autour de vous. Whatisthisplane affiche la position, la trajectoire et les informations de chaque vol grâce à une carte interactive.";
     $title = "WhatisThisPlane – Identifier et découvrir les avions facilement";
     require "../src/includes/header.inc.php";
 ?>
@@ -14,7 +15,7 @@
         <div class="hero-content">
             <h2>Découvrez les vols au-dessus de vous ou explorez le trafic aérien en direct.</h2>
             <p>Utilisez votre position ou recherchez un vol pour savoir quel avion passe au-dessus de vous.</p>
-            <a href="work.php">Identifier l’avion au-dessus de moi</a>
+            <a href="carte.php">Identifier l’avion au-dessus de moi</a>
         </div>
     </section>
     <section class="cartes-services mt-5" id="service">

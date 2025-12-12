@@ -6,6 +6,7 @@
         exit;
     }
 
+    $description = "Connectez vous pour accédez votre liste d'avions favoris. Retrouvez, gérez facilement les informations de vos avions.";
     $title = "Mes avions favoris - WhatIsThisPlane";
     require "../src/includes/header.inc.php";
 ?>
@@ -19,14 +20,31 @@
         <div id="favorites-container" class="grille-cartes">
             <p>Chargement de vos favoris...</p>
         </div>
+		
+		<div id="loading-more" style="text-align: center; padding: 20px; display: none;">
+            <p>Chargement...</p>
+        </div>
     </main>
 
     <script>
+        let currentOffset = 0;
+        const limit = 4;
+        let isLoading = false;
+        let hasMore = true;
+		
         async function loadFavorites() {
+			if (isLoading || !hasMore) return;
+			isLoading = true;
+			
+			const loadingMore = document.getElementById('loading-more');
             const container = document.getElementById('favorites-container');
+			
+			if (currentOffset > 0) {
+                loadingMore.style.display = 'block';
+            }
 
             try {
-                const response = await fetch('ajax/favorites/get_favorite.php', {
+                const response = await fetch(`ajax/favorites/get_favorite.php?offset=${currentOffset}&limit=${limit}`, {
                     method: 'GET',
                     credentials: 'include',
                 });
@@ -34,16 +52,29 @@
                 const data = await response.json();
 
                 if (!data.success) {
-                    container.innerHTML = `<p class="error">Erreur: ${data.error}</p>`;
+                    if (currentOffset === 0) {
+                        container.innerHTML = '<p class="error">Erreur: ${data.error}</p>';
+                    }
+                    hasMore = false;
                     return;
                 }
 
-                if (data.favorites.length === 0) {
+                // Premier chargement et aucun résultat
+                if (currentOffset === 0 && data.favorites.length === 0) {
                     container.innerHTML = `<p>Vous n'avez aucun avion en favori pour le moment.</p>`;
+                    hasMore = false;
                     return;
                 }
 
-                container.innerHTML = '';
+                // Retirer le message de chargement initial
+                if (currentOffset === 0) {
+                    container.innerHTML = '';
+                }
+
+                // Plus de résultats à charger ?
+                if (data.favorites.length < limit) {
+                    hasMore = false;
+                }
 
                 data.favorites.forEach(fav => {
                     const card = document.createElement('article');
@@ -74,10 +105,18 @@
 
                     container.appendChild(card);
                 });
+				
+				currentOffset += data.favorites.length;
 
             } catch (error) {
                 console.error(error);
-                container.innerHTML = `<p>Impossible de charger vos favoris.</p>`;
+                if (currentOffset === 0) {
+                    container.innerHTML = `<p>Impossible de charger vos favoris.</p>`;
+                }
+                hasMore = false;
+            } finally {
+                isLoading = false;
+                loadingMore.style.display = 'none';
             }
         }
 
@@ -101,6 +140,9 @@
                     msg.innerHTML = '<p style="color: green;">Avion supprimé avec succès.</p>';
                     setTimeout(() => msg.innerHTML = '', 3000);
 
+					currentOffset = 0;
+                    hasMore = true;
+                    document.getElementById('favorites-container').innerHTML = '';
                     loadFavorites();
                 } else {
                     alert("Erreur lors de la suppression : " + result.error);
@@ -112,7 +154,21 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadFavorites);
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = window.innerHeight;
+
+            // 400px à la fin de la page
+            if (scrollTop + clientHeight >= scrollHeight - 400) {
+                loadFavorites();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFavorites();
+            window.addEventListener('scroll', handleScroll);
+        })
     </script>
 
 <?php

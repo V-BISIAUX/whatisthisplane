@@ -12,6 +12,10 @@ header.custom-header a {
     background: #0f172a;
 }
 
+section {
+    background: #0B101A;
+}
+
 body {
     background: #0B101A;
 }
@@ -36,13 +40,8 @@ header nav a {
 
 aside {
     background-color: #0f172a;
-    border-left: 4px solid #e4f3ff;
     border-bottom: 4px solid #e4f3ff;
     color: #e4f3ff;
-}
-
-aside:hover {
-    transform: scale(0.9);
 }
 
 footer {
