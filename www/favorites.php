@@ -17,9 +17,9 @@
 
         <div id="msg-container"></div>
 
-        <div id="favorites-container" class="grille-cartes">
+        <section id="favorites-container" class="grille-cartes">
             <p>Chargement de vos favoris...</p>
-        </div>
+        </section>
 		
 		<div id="loading-more" style="text-align: center; padding: 20px; display: none;">
             <p>Chargement...</p>

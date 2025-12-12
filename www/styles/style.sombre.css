@@ -112,6 +112,23 @@ form input[type="submit"]:hover, form select {
     border-radius: 4px;
 }
 
+.carte {
+    background-color: #0f172a;
+    color: #e4f3ff;
+}
+
+.carte h3, .carte p {
+    color: #e4f3ff;
+}
+
+.carte figure img {
+    background-color: #e4f3ff;
+}
+
+form textarea {
+    background-color: #0f172a;
+}
+
 /* Image principale */
 .aircraft-photo {
     max-width: 500px;
@@ -120,4 +137,18 @@ form input[type="submit"]:hover, form select {
     border-radius: 6px;
     margin-top: 10px;
     display: block;
+}
+
+.card {
+    background-color: #0f172a;
+}
+
+.card-content h3, .card-info-item span {
+    color: #e4f3ff;
+}
+
+#histogramme {
+    background-color: #0f172a;
+    border-bottom-color: #e4f3ff;
+    padding: 2%
 }
