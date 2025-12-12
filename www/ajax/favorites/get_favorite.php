@@ -43,6 +43,10 @@ try {
         echo json_encode(['success' => false, 'error' => 'Utilisateur non authentifié']);
         exit;
     }
+	
+	// Récupère les paramètres de pagination
+    $offset = isset($_GET['offset']) ? max(0, (int)$_GET['offset']) : 0;
+    $limit = isset($_GET['limit']) ? min(50, max(1, (int)$_GET['limit'])) : 5;
     
     $pdo = getConnection();
     
@@ -68,9 +72,10 @@ try {
         INNER JOIN airplanes a ON f.airplane_id = a.airplane_id
         WHERE f.user_id = ?
         ORDER BY f.added_at DESC
+		LIMIT ? OFFSET ?
     ");
     
-    $stmt->execute([$userId]);
+    $stmt->execute([$userId, $limit, $offset]);
     $favorites = $stmt->fetchAll();
     
     // Formater les résultats
@@ -103,7 +108,9 @@ try {
     echo json_encode([
         'success' => true,
         'count' => count($formatted),
-        'favorites' => $formatted
+        'favorites' => $formatted,
+        'offset' => $offset,
+        'limit' => $limit
     ]);
     
 } catch (PDOException $e) {
