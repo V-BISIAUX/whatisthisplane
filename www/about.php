@@ -23,9 +23,9 @@
                     <img src="images/employee-icon.svg" alt="photo (avatar) du membre" width="150" height="150"/>
                 </figure>
                 <h3>BISIAUX Valentin</h3>
-                <p><strong>Rôle :</strong></p>
-                <p><strong>Description :</strong></p>
-                <p><strong>Compétences :</strong></p>
+                <p><strong>Rôle :</strong> Intégration API et Services Externes</p>
+                <p><strong>Description :</strong> Récupère les données des avions depuis OpenSky API. Gère les appels API, traite les réponses JSON et stocke les informations des vols dans la base de données.</p>
+                <p><strong>Compétences :</strong> API, JavaScript, Leaflet (carte), Géolocalisation, Intégration de données externes, Git</p>
                 <p><strong>Contact :</strong>  valentin.bisiaux@etu.cyu.fr</p>
             </article>
 
@@ -34,9 +34,9 @@
                     <img src="images/businessman-icon.svg" alt="photo (avatar) du membre" width="150" height="150"/>
                 </figure>
                 <h3>COSTA Mathéo</h3>
-                <p><strong>Rôle :</strong></p>
-                <p><strong>Description :</strong></p>
-                <p><strong>Compétences :</strong></p>
+                <p><strong>Rôle :</strong> Gestion Base de Données et Utilisateurs</p>
+                <p><strong>Description :</strong> Crée et gère la base de données MySQL. S'occupe des tables, des inscriptions, connexions et profils utilisateurs.</p>
+                <p><strong>compétences :</strong> MySQL, PHP, AJAX, Système de login, Sécurité des données, Git</p>
                 <p><strong>Contact :</strong> matheo.costa4@etu.u-cergy.fr</p>
             </article>
 
@@ -45,9 +45,9 @@
                     <img src="images/employee-icon.svg" alt="photo (avatar) du membre" width="150" height="150"/>
                 </figure>
                 <h3>DIALLO Thierno Abasse</h3>
-                <p><strong>Rôle :</strong></p>
-                <p><strong>Description :</strong></p>
-                <p><strong>Compétences :</strong></p>
+                <p><strong>Rôle :</strong> Développement Frontend et Interface</p>
+                <p><strong>Description :</strong> Crée l'interface utilisateur du site. Assure que tout soit responsive. Polyvalent et assure une expérience utilisateur fluide</p>
+                <p><strong>Compétences :</strong> CRON, HTML/CSS, JavaScript, Design responsive, Création d'interfaces interactives, Git</p>
                 <p><strong>Contact :</strong> thierno-abasse.diallo1@etu.cyu.fr</p>
             </article>
         </div>

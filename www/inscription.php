@@ -9,7 +9,7 @@
     <main>
         <h1>Inscrivez-vous sur WhatisThisPlane</h1>
         <form method="post" id="subscribe-form">
-            <p class="legend">S"inscrire</p>
+            <p class="legend">S'inscrire</p>
             <label for="login">Entrez votre login</label>
             <div class="input-icon">
                 <i class="fa-solid fa-id-card"></i>
@@ -46,6 +46,7 @@
             <span>Si vous avez un compte, <a href="cnx.php">cliquez ici pour vous connecter</a></span>
         </aside>
     </main>
+    <script async src="https://www.google.com/recaptcha/api.js" defer></script>
     <script>
         document.getElementById('subscribe-form').addEventListener('submit', function(event){
             event.preventDefault();
@@ -57,8 +58,16 @@
             const email = document.getElementById('email').value;
             const prenom = document.getElementById('prenom').value;
             const nom = document.getElementById('nom').value;
-            const recaptchaToken = document.querySelector('textarea[name="g-recaptcha-response"]').value;
-
+			const recaptchaToken = grecaptcha.getResponse();
+			
+			// Verification du captcha avant de l'envoyer
+			if (!recaptchaToken) {
+                const messageElem = document.getElementById('message');
+                messageElem.style.color = 'red';
+                messageElem.textContent = 'Veuillez valider le reCAPTCHA';
+                return;
+            }
+			
             try {
                 const response = await fetch('ajax/user/register.php', {
                     method: 'POST',
@@ -79,13 +88,18 @@
                 } else {
                     messageElem.style.color = 'red';
                     messageElem.textContent = data.error || 'Erreur inconnue';
+					grecaptcha.reset();
                 }
             }catch (err){
-                console.log(err);
+                console.log('Erreur:', err);
+                const messageElem = document.getElementById('message');
+                messageElem.style.color = 'red';
+                messageElem.textContent = 'Erreur de connexion au serveur';
+                
+                grecaptcha.reset();
             }
         }
     </script>
-    <script async src="https://www.google.com/recaptcha/api.js" defer></script>
 <!--    <script src="js/ajax.js"></script>-->
 <?php
     require "../src/includes/footer.inc.php";
